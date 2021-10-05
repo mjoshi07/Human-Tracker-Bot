@@ -1,0 +1,8 @@
+# VS Code files
+*.VC.db*
+
+# Build artifacts
+build/
+
+# Python
+*.pyc
