@@ -38,8 +38,7 @@ Image taken from this [article](https://medium.com/@luanaebio/detecting-people-w
 * Activity diagram
 ![image](https://github.com/mjoshi07/Acme-Robotics-Human-Tracker/blob/main/UML_Diagrams/activity_diagram.drawio.png)
 
-* Quadchart, Product backlog, Proposal of 2 pages can be found here: 
-![proposaldocumentation](https://github.com/mjoshi07/Acme-Robotics-Human-Tracker/tree/main/Proposal_documentation)
+* Quadchart, Product backlog, Proposal of 2 pages can be found ![here](https://github.com/mjoshi07/Acme-Robotics-Human-Tracker/tree/main/Proposal_documentation)
 
 
 
