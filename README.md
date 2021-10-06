@@ -33,7 +33,7 @@ Image taken from this [article](https://medium.com/@luanaebio/detecting-people-w
 ## UML Diagram
 The class dependency diagram of the proposed design:
 
-![image](/home/naitri/Downloads/uml_diagram.drawio.png)
+![image](https://github.com/mjoshi07/Acme-Robotics-Human-Tracker/blob/main/UML_Diagrams/uml_diagram.drawio.png)
 
 
 ## Technology 
