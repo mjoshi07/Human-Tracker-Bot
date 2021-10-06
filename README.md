@@ -35,6 +35,14 @@ The class dependency diagram of the proposed design:
 
 ![image](https://github.com/mjoshi07/Acme-Robotics-Human-Tracker/blob/main/UML_Diagrams/uml_diagram.drawio.png)
 
+##Activity diagram
+![image](https://github.com/mjoshi07/Acme-Robotics-Human-Tracker/blob/maiUML_Diagrams/activity_diagram.drawio.png)
+
+##Quadchart, Product backlog, Proposal of 2 pages can be found here: 
+![proposaldocumentation](https://github.com/mjoshi07/Acme-Robotics-Human-Tracker/tree/main/Proposal_documentation)
+
+
+
 
 ## Technology 
 * We will be following [AIP](https://en.wikipedia.org/wiki/Agile_software_development) (Agile Iterative Process) and implement the software using [TDD](https://en.wikipedia.org/wiki/Test-driven_development) (Test Driven Development)
