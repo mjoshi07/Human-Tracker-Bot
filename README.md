@@ -1,7 +1,8 @@
-# Acme-Robotics-Human-Tracker
+# Acme-Robotics-Human-Detector-Tracker
 
 [![Build Status](https://app.travis-ci.com/mjoshi07/Acme-Robotics-Human-Tracker.svg?branch=main)](https://app.travis-ci.com/mjoshi07/Acme-Robotics-Human-Tracker)
 [![Coverage Status](https://coveralls.io/repos/github/mjoshi07/Acme-Robotics-Human-Tracker/badge.svg?branch=main)](https://coveralls.io/github/mjoshi07/Acme-Robotics-Human-Tracker?branch=main)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 Detects and Tracks Human in Robot Reference Frame
 
@@ -29,6 +30,11 @@ Image taken from this [article](https://medium.com/@luanaebio/detecting-people-w
 * Since yoloV4-tiny is the compressed version of yoloV4, therefore it lacks in accuracy. YoloV4 achieves an average precision of 64.9% while yoloV4-tiny achieves an average precision of 40.2%. Check full comparison [here](https://user-images.githubusercontent.com/4096485/85734112-6e366700-b705-11ea-95d1-fcba0de76d72.png)
 * Running the system on the robot can memory expensive due to deep learning model, one possible solution is to quantize the weights of the model so that it takes less memory and is faster
 
+## UML Diagram
+The class dependency diagram of the proposed design:
+
+![image](/home/naitri/Downloads/uml_diagram.drawio.png)
+
 
 ## Technology 
 * We will be following [AIP](https://en.wikipedia.org/wiki/Agile_software_development) (Agile Iterative Process) and implement the software using [TDD](https://en.wikipedia.org/wiki/Test-driven_development) (Test Driven Development)
@@ -42,6 +48,4 @@ Image taken from this [article](https://medium.com/@luanaebio/detecting-people-w
 ## TODO
 * Fix travis build fail
 * Complete Implementation
-* Update Readme
 * Cppcheck and Cpplint
-* Add UML and Activity Diagram to Readme
