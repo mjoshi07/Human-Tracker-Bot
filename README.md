@@ -31,14 +31,14 @@ Image taken from this [article](https://medium.com/@luanaebio/detecting-people-w
 * Running the system on the robot can memory expensive due to deep learning model, one possible solution is to quantize the weights of the model so that it takes less memory and is faster
 
 ## UML Diagram
-The class dependency diagram of the proposed design:
+* The class dependency diagram of the proposed design:
 
 ![image](https://github.com/mjoshi07/Acme-Robotics-Human-Tracker/blob/main/UML_Diagrams/uml_diagram.drawio.png)
 
-##Activity diagram
-![image](https://github.com/mjoshi07/Acme-Robotics-Human-Tracker/blob/maiUML_Diagrams/activity_diagram.drawio.png)
+* Activity diagram
+![image](https://github.com/mjoshi07/Acme-Robotics-Human-Tracker/blob/main/UML_Diagrams/activity_diagram.drawio.png)
 
-##Quadchart, Product backlog, Proposal of 2 pages can be found here: 
+* Quadchart, Product backlog, Proposal of 2 pages can be found here: 
 ![proposaldocumentation](https://github.com/mjoshi07/Acme-Robotics-Human-Tracker/tree/main/Proposal_documentation)
 
 
