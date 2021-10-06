@@ -9,8 +9,8 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${PROJECT_SOURCE_DIR}/cmake)
 # We probably don't want this to run on every build.
 option(COVERAGE "Generate Coverage Data" OFF)
 
-set(OpenCV_DIR          "/home/mayankjo/Development/softwares/opencv/build/install/lib/cmake/opencv4")
-set(OpenCV_INCLUDE_DIRS "/home/mayankjo/Development/softwares/opencv/build/install/include/opencv4")
+# set(OpenCV_DIR          "/home/mayankjo/Development/softwares/opencv/build/install/lib/cmake/opencv4")
+# set(OpenCV_INCLUDE_DIRS "/home/mayankjo/Development/softwares/opencv/build/install/include/opencv4")
 find_package(OpenCV)
 
 message(STATUS "OpenCV_DIR = ${OpenCV_DIR}")
