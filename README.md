@@ -39,3 +39,9 @@ Image taken from this [article](https://medium.com/@luanaebio/detecting-people-w
 * External Library (Opencv >= 4.5.0)
 * Pre-trained model (yoloV4-tiny)
 
+## TODO
+* Fix travis build fail
+* Complete Implementation
+* Update Readme
+* Cppcheck and Cpplint
+* Add UML and Activity Diagram to Readme
