@@ -25,7 +25,7 @@ before_install:
 install:
   - sudo apt-get install -y -qq lcov
   ## install requirements
-    - sudo chmod +x requirements.sh
+  - sudo chmod +x requirements.sh
   - ./requirements.sh
   
 script:
