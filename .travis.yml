@@ -24,6 +24,10 @@ before_install:
   - pip install --user cpp-coveralls
 install:
   - sudo apt-get install -y -qq lcov
+  ## install requirements
+    - sudo chmod +x requirements.sh
+  - ./requirements.sh
+  
 script:
   - export CXX=$COMPILER;
   - mkdir build
