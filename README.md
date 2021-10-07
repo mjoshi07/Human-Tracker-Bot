@@ -1,7 +1,7 @@
 # Acme-Robotics-Human-Detector-Tracker
 
 [![Build Status](https://app.travis-ci.com/mjoshi07/Acme-Robotics-Human-Tracker.svg?branch=main)](https://app.travis-ci.com/mjoshi07/Acme-Robotics-Human-Tracker)
-[![Coverage Status](https://coveralls.io/repos/github/mjoshi07/Acme-Robotics-Human-Tracker/badge.svg?branch=main)](https://coveralls.io/github/mjoshi07/Acme-Robotics-Human-Tracker?branch=main)
+[![Coverage Status](https://coveralls.io/repos/github/mjoshi07/Acme-Robotics-Human-Tracker/badge.svg)](https://coveralls.io/github/mjoshi07/Acme-Robotics-Human-Tracker)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 Detects and Tracks Human in Robot Reference Frame
@@ -53,6 +53,6 @@ Image taken from this [article](https://medium.com/@luanaebio/detecting-people-w
 * Pre-trained model (yoloV4-tiny)
 
 ## TODO
-* Fix travis build fail
+* fix coveralls percentage unknown 
 * Complete Implementation
 * Cppcheck and Cpplint
