@@ -21,7 +21,7 @@ if (COVERAGE)
     include(CodeCoverage)
     set(LCOV_REMOVE_EXTRA "'vendor/*'")
     setup_target_for_coverage(code_coverage test/human-tracker-test coverage)
-    set(COVERAGE_SRCS app/main.cpp include/AutoBot.h include/Detector.h include/HumanTracker.h include/Utils.h)
+    set(COVERAGE_SRCS app/main.cpp app/AutoBot.cpp app/Detector.cpp app/HumanTracker.cpp app/Utils.cpp include/AutoBot.h include/Detector.h include/HumanTracker.h include/Utils.h)
 
     SET(CMAKE_CXX_FLAGS "-g -O0 -fprofile-arcs -ftest-coverage")
     SET(CMAKE_C_FLAGS "-g -O0 -fprofile-arcs -ftest-coverage")
