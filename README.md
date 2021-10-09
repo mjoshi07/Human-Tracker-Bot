@@ -53,6 +53,5 @@ Image taken from this [article](https://medium.com/@luanaebio/detecting-people-w
 * Pre-trained model (yoloV4-tiny)
 
 ## TODO
-* fix coveralls percentage unknown 
 * Complete Implementation
 * Cppcheck and Cpplint
