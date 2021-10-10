@@ -11,24 +11,23 @@
 
 #include <AutoBot.h>
 
-using namespace acme;
 
-AutoBot::AutoBot() {}
+acme::AutoBot::AutoBot() {}
 
-AutoBot::AutoBot(bool is_calibrated, double calib_factor) {}
+acme::AutoBot::AutoBot(bool is_calibrated, double calib_factor) {}
 
-AutoBot::~AutoBot() {}
+acme::AutoBot::~AutoBot() {}
 
-void AutoBot::Run(Mode mode) {}
+void acme::AutoBot::Run(const Mode mode) {}
 
-void AutoBot::SetRobotPose(Pose robo_pose) {}
+void acme::AutoBot::SetRobotPose(const Pose &robo_pose) {}
 
-void AutoBot::CollectTrainData(std::string out_path, int num_imgs, int fps) {}
+void acme::AutoBot::CollectTrainData() {}
 
-void AutoBot::DetectTestData(std::string test_data_path) {}
+void acme::AutoBot::DetectTestData() {}
 
-std::vector<Pose>  AutoBot::RunRealTime(std::string in_path, InputType type) {
-    return std::vector<Pose>();
+std::vector<acme::Pose>  acme::AutoBot::RunRealTime() {
+    return std::vector<acme::Pose>();
 }
 
-void AutoBot::Calibrate() {}
+void acme::AutoBot::Calibrate() {}

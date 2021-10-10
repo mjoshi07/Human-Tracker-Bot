@@ -10,40 +10,44 @@
  */
 
 
-#ifndef HEADER_DETECTOR_H_
-#define HEADER_DETECTOR_H_
+#ifndef INCLUDE_DETECTOR_H_
+#define INCLUDE_DETECTOR_H_
 
 #include <memory>
 #include <vector>
-#include <Utils.h>
+#include <string>
+
 #include <opencv2/opencv.hpp>
 #include <opencv2/dnn/dnn.hpp>
 #include <opencv2/dnn/shape_utils.hpp>
 
+#include <Utils.h>
+
+
 namespace acme {
-    class Detector {
-    public:
-        Detector(double conf_thresh, std::vector<std::string> classes_to_detect={}, double nms_thresh=0.4,  int input_width=416, int input_height=416, bool swap_RB=true, bool crop_img=false, int backend=0, int target=0, int num_channels=3);
-        ~Detector();
+class Detector {
+ public:
+    Detector(double conf, const std::vector<std::string> &classes);
+    ~Detector();
 
-        std::vector<cv::Rect> Detect(cv::Mat& frame);
-        void SetClassesToDetect(std::vector<std::string> classes_to_detect={});
-        void setNmsThresh(double nms_thresh);
-        void setInputWIdth(int input_width);
-        void setInputHeight(int input_height);
-        void setSwapRB(bool swap_rb);
-        void setCropImg(bool crop_img);
-        void setBackend(int backend);
-        void setTarget(int target);
-        void setNumChannels(int num_channels);
+       std::vector<cv::Rect> Detect(const cv::Mat& frame);
+       void SetClasses(const std::vector<std::string> &classes = {});
+       void setNmsThresh(const double nms_thresh);
+       void setInputWIdth(const int input_width);
+       void setInputHeight(const int input_height);
+       void setSwapRB(const bool swap_rb);
+       void setCropImg(const bool crop_img);
+       void setBackend(const int backend);
+       void setTarget(const int target);
+       void setNumChannels(const int num_channels);
 
-    private:
-        void WarmUp();
-        void initModel(std::string model_weights, std::string model_config, int backend, int target);
+ private:
+       void WarmUp();
+       void initModel(int backend, int target);
 
-    private:
+ private:
         double conf_threshold_;
-        std::vector<std::string> classes_to_detect_;
+        std::vector<std::string> classes_;
         double nms_threshold_;
         double input_width_;
         double input_height_;
@@ -52,7 +56,7 @@ namespace acme {
         int backend_;
         int target_;
         int num_channels_;
-        //std::unique_ptr<cv::dnn::Net> network_;
-    };
-}
-#endif // HEADER_DETECTOR_H_
+        std::unique_ptr<cv::dnn::Net> network_;
+};
+}  // namespace acme
+#endif  // INCLUDE_DETECTOR_H_

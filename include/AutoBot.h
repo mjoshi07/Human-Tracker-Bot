@@ -17,7 +17,6 @@
 #include <vector>
 #include <memory>
 
-#include <Utils.h>
 #include <HumanTracker.h>
 
 namespace acme {
@@ -40,13 +39,13 @@ class AutoBot {
       AutoBot(bool is_calibrated, double calib_factor);
       ~AutoBot();
 
-      void Run(acme::Mode mode);
-      void SetRobotPose(acme::Pose robo_pose);
+      void Run(const acme::Mode mode);
+      void SetRobotPose(const acme::Pose &robo_pose);
 
  private:
-      void CollectTrainData(std::string out_path, int num_imgs, int fps);
-      void DetectTestData(std::string test_data_path);
-      std::vector<Pose> RunRealTime(std::string in_path, acme::InputType type);
+      void CollectTrainData();
+      void DetectTestData();
+      std::vector<Pose> RunRealTime();
       void Calibrate();
 
  private:

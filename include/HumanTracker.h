@@ -10,28 +10,32 @@
  */
 
 
-#ifndef HEADER_HUMAN_TRACKER_H_
-#define HEADER_HUMAN_TRACKER_H_
+#ifndef INCLUDE_HUMANTRACKER_H_
+#define INCLUDE_HUMANTRACKER_H_
+
+#include <vector>
+#include <memory>
 
 #include <Detector.h>
 #include <opencv2/tracking.hpp>
 #include <opencv2/core/ocl.hpp>
 
 namespace acme {
-   class HumanTracker {
-   public:
-      HumanTracker(double confidence);
-      ~HumanTracker();
+class HumanTracker {
+ public:
+  explicit HumanTracker(double confidence);
+  ~HumanTracker();
 
-      std::vector<cv::Rect> TrackHumans(cv::Mat &frame);
+  std::vector<cv::Rect> TrackHumans(const cv::Mat &frame);
 
-   private:
-      void InitParams(double confidence);
-      void ProcessFrame(cv::Mat &frame);
+ private:
+  void InitParams(double confidence);
+  void ProcessFrame(const cv::Mat &frame);
 
-   private:
-      std::unique_ptr<acme::Detector> detector_;
-      cv::Ptr<cv::Tracker> tracker_;
-   };
-}
-#endif // HEADER_HUMAN_TRACKER_H_
+ private:
+  std::unique_ptr<acme::Detector> detector_;
+  cv::Ptr<cv::Tracker> tracker_;
+};
+}  // namespace acme
+#endif  // INCLUDE_HUMANTRACKER_H_
+

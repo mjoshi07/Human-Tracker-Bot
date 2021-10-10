@@ -10,46 +10,48 @@
  */
 
 #include <gtest/gtest.h>
+#include <opencv2/opencv.hpp>
+#include <opencv2/core.hpp>
+
+
 #include <AutoBot.h>
 #include <HumanTracker.h>
 #include <Detector.h>
 #include <Utils.h>
-#include <opencv2/opencv.hpp>
-#include <opencv2/core.hpp>
 
-using namespace acme;
 
-std::unique_ptr<AutoBot> robot_object;
-std::unique_ptr<HumanTracker> tracker_object = std::make_unique<HumanTracker>(0.4);
-std::unique_ptr<Detector> detect_object;
-Utils utils_object;
+std::unique_ptr<acme::AutoBot> robot_object;
+std::unique_ptr<acme::HumanTracker> tracker_object;
+std::unique_ptr<acme::Detector> detect_object;
+acme::Utils utils_object;
 
 TEST(AutoBot, Run) {
-    Mode mode = Mode::kRealTime;
+    acme::Mode mode = acme::Mode::kRealTime;
     ASSERT_NO_THROW(robot_object->Run(mode));
 
-    mode = Mode::kTesting;
+    mode = acme::Mode::kTesting;
     ASSERT_NO_THROW(robot_object->Run(mode));
 
-    mode = Mode::kTraining;
+    mode = acme::Mode::kTraining;
     ASSERT_NO_THROW(robot_object->Run(mode));
 }
 TEST(AutoBot, SetRobotPose) {
-    Pose p;
-     ASSERT_NO_THROW(robot_object->SetRobotPose(p));
+    acme::Pose p;
+    ASSERT_NO_THROW(robot_object->SetRobotPose(p));
 }
 TEST(HumanTracker, TrackHumans) {
-     cv::Mat img;
+    cv::Mat img;
+    tracker_object = std::make_unique<acme::HumanTracker>(0.4);
     auto output = tracker_object->TrackHumans(img);
-     ASSERT_EQ(static_cast<int>(output.size()), 0);
+    ASSERT_EQ(static_cast<int>(output.size()), 0);
 }
 TEST(Detector, Detect) {
     cv::Mat img;
-     auto output = detect_object->Detect(img);
-      ASSERT_EQ(static_cast<int>(output.size()), 0);
+    auto output = detect_object->Detect(img);
+    ASSERT_EQ(static_cast<int>(output.size()), 0);
 }
 TEST(Detector, SetClassesToDetect) {
-    ASSERT_NO_THROW(detect_object->SetClassesToDetect());
+    ASSERT_NO_THROW(detect_object->SetClasses());
 }
 TEST(Detector, setNmsThresh) {
     ASSERT_NO_THROW(detect_object->setNmsThresh(0.4));
@@ -75,22 +77,21 @@ TEST(Detector, setTarget) {
 TEST(Detector, setNumChannels) {
     ASSERT_NO_THROW(detect_object->setNumChannels(3));
 }
-TEST(Utils, GetPointWithinImage) {
+TEST(Utils, FitWithinSize) {
     cv::Point p = cv::Point();
     cv::Size s = cv::Size();
-    auto output = utils_object.GetPointWithinImage(p, s);
+    auto output = utils_object.FitWithinSize(p, s);
     ASSERT_EQ(output.x, -1);
     ASSERT_EQ(output.y, -1);
-}
-TEST(Utils, GetBboxWithinImage) {
+
     cv::Rect r = cv::Rect();
-    cv::Size s = cv::Size();
-    auto output = utils_object.GetBboxWithinImage(r, s);
-    ASSERT_EQ(output.x, -1);
-    ASSERT_EQ(output.y, -1);
-    ASSERT_EQ(output.width, -1);
-    ASSERT_EQ(output.height, -1);
+    auto output2 = utils_object.FitWithinSize(r, s);
+    ASSERT_EQ(output2.x, -1);
+    ASSERT_EQ(output2.y, -1);
+    ASSERT_EQ(output2.width, -1);
+    ASSERT_EQ(output2.height, -1);
 }
+
 TEST(Utils, GetBboxCenter) {
     cv::Rect r = cv::Rect();
     auto output = utils_object.GetBboxCenter(r);
@@ -100,12 +101,14 @@ TEST(Utils, GetBboxCenter) {
 TEST(Utils, GetBboxArea) {
     cv::Rect r = cv::Rect();
     auto output = utils_object.GetBboxArea(r);
-    ASSERT_EQ(output, -1);
+    ASSERT_EQ(output, -1.0);
 }
 TEST(Utils, ResizeImage) {
     cv::Mat img;
     cv::Size s = cv::Size();
-    ASSERT_NO_THROW(utils_object.ResizeImage(img, s));
+    auto output  = utils_object.ResizeImage(img, s);
+    ASSERT_EQ(static_cast<int>(output.cols), 1);
+    ASSERT_EQ(static_cast<int>(output.rows), 1);
 }
 TEST(Utils, CalculateIOU) {
     cv::Rect r1 = cv::Rect();
@@ -122,7 +125,9 @@ TEST(Utils, CalcuPixelsToPoselateIOU) {
     ASSERT_EQ(output.z, -1);
 }
 TEST(Utils, GetTransformedPose) {
-    auto output = utils_object.GetTransformedPose(Pose(), Pose());
+    acme::Pose p1 = acme::Pose();
+    acme::Pose p2 = acme::Pose();
+    auto output = utils_object.GetTransformedPose(p1, p2);
     ASSERT_EQ(output.x, -1);
     ASSERT_EQ(output.y, -1);
     ASSERT_EQ(output.z, -1);

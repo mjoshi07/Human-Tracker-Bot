@@ -25,14 +25,14 @@ struct Pose{
 
 class Utils{
  public:
-    static cv::Point GetPointWithinImage(cv::Point &p, cv::Size &img_size);
-    static cv::Rect GetBboxWithinImage(cv::Rect &bbox, cv::Size &img_size);
-    static cv::Point GetBboxCenter(cv::Rect &bbox);
-    static double GetBboxArea(cv::Rect &bbox);
-    static void ResizeImage(cv::Mat &input_img, cv::Size& target_size);
-    static double CalculateIOU(const cv::Rect& bbox1, const cv::Rect& bbox2);
-    static Pose PixelsToPose(cv::Rect &bbox, double calib_factor);
-    static Pose GetTransformedPose(const Pose& dest_frame_of_ref, const Pose& src_frame_of_ref);
+    static cv::Point FitWithinSize(const cv::Point &p, const cv::Size &s);
+    static cv::Rect FitWithinSize(const cv::Rect &b, const cv::Size &s);
+    static cv::Point GetBboxCenter(const cv::Rect &bbox);
+    static double GetBboxArea(const cv::Rect &bbox);
+    static cv::Mat ResizeImage(const cv::Mat &img, const cv::Size &s);
+    static double CalculateIOU(const cv::Rect& b1, const cv::Rect& b2);
+    static Pose PixelsToPose(const cv::Rect &b, double calib_factor);
+    static Pose GetTransformedPose(const Pose& dst, const Pose& src);
 };
 }  // namespace acme
 #endif  // INCLUDE_UTILS_H_

@@ -12,34 +12,34 @@
 
 #include <Detector.h>
 
-using namespace acme;
 
-Detector::Detector(double conf_thresh, std::vector<std::string> classes_to_detect, double nms_thresh,  int input_width, int input_height, bool swap_RB, bool crop_img, int backend, int target, int num_channels) {}
-Detector::~Detector() {}
+acme::Detector::Detector(double conf, const std::vector<std::string> &classes) {
+}
+acme::Detector::~Detector() {}
 
-std::vector<cv::Rect> Detector::Detect(cv::Mat& frame) {
+std::vector<cv::Rect> acme::Detector::Detect(const cv::Mat& frame) {
     return std::vector<cv::Rect>();
 }
 
-void Detector::SetClassesToDetect(std::vector<std::string> classes_to_detect) {}
+void acme::Detector::SetClasses(const std::vector<std::string> &classes) {}
 
-void Detector::setNmsThresh(double nms_thresh) {}
+void acme::Detector::setNmsThresh(const double nms_thresh) {}
 
-void Detector::setInputWIdth(int input_width) {}
+void acme::Detector::setInputWIdth(const int input_width) {}
 
-void Detector::setInputHeight(int input_height) {}
+void acme::Detector::setInputHeight(const int input_height) {}
 
-void Detector::setSwapRB(bool swap_rb) {}
+void acme::Detector::setSwapRB(const bool swap_rb) {}
 
-void Detector::setCropImg(bool crop_img) {}
+void acme::Detector::setCropImg(const bool crop_img) {}
 
-void Detector::setBackend(int backend) {}
+void acme::Detector::setBackend(const int backend) {}
 
-void Detector::setTarget(int target) {}
+void acme::Detector::setTarget(const int target) {}
 
-void Detector::setNumChannels(int num_channels) {}
+void acme::Detector::setNumChannels(const int num_channels) {}
 
-void Detector::initModel(std::string weights, std::string config, int backend, int target) {}
+void acme::Detector::initModel(int backend, int target) {}
 
-void Detector::WarmUp() {}
+void acme::Detector::WarmUp() {}
 

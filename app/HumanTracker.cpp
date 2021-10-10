@@ -12,16 +12,15 @@
 
 #include <HumanTracker.h>
 
-using namespace acme;
 
-HumanTracker::HumanTracker(double confidence) {}
+acme::HumanTracker::HumanTracker(double confidence) {}
 
-HumanTracker::~HumanTracker() {}
+acme::HumanTracker::~HumanTracker() {}
 
-void HumanTracker::InitParams(double confidence) {}
+void acme::HumanTracker::InitParams(double confidence) {}
 
-std::vector<cv::Rect> HumanTracker::TrackHumans(cv::Mat &frame) {
+std::vector<cv::Rect> acme::HumanTracker::TrackHumans(const cv::Mat &frame) {
     return std::vector<cv::Rect>();
 }
 
-void HumanTracker::ProcessFrame(cv::Mat &frame) {}
+void acme::HumanTracker::ProcessFrame(const cv::Mat &frame) {}
