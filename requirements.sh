@@ -25,12 +25,11 @@ cd build
 cmake -D CMAKE_BUILD_TYPE=RELEASE \
       -D BUILD_EXAMPLES=OFF \
       -D BUILD_opencv_apps=OFF \
-       -D OPENCV_EXTRA_MODULES_PATH=../../opencv_contrib/modules \
+      -D OPENCV_EXTRA_MODULES_PATH=../../opencv_contrib/modules \
       -D BUILD_DOCS=OFF \
       -D BUILD_PERF_TESTS=OFF \
       -D BUILD_TESTS=OFF \
       -D WITH_CUDA=OFF \
-      -DBUILD_LIST=dnn, features2d, highgui, imgcodecs, imgproc, video, tracking,videoio,ts \
       -D CMAKE_INSTALL_PREFIX=/usr/local ..
       
 make 
