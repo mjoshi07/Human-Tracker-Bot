@@ -30,7 +30,7 @@ cmake -D CMAKE_BUILD_TYPE=RELEASE \
       -D BUILD_PERF_TESTS=OFF \
       -D BUILD_TESTS=OFF \
       -D WITH_CUDA=OFF \
-      -DBUILD_LIST=dnn, features2d, highgui, imgcodecs, imgproc, video, tracking,videoio,ts
+      -DBUILD_LIST=dnn, features2d, highgui, imgcodecs, imgproc, video, tracking,videoio,ts \
       -D CMAKE_INSTALL_PREFIX=/usr/local ..
       
 make 
