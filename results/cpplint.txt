@@ -1,6 +1,13 @@
-cpplint $( find . -name \*.hpp -or -name \*.cpp | grep -vE -e "^./build/" -e "^./vendor/" -e "^./docs/" -e "^./results" )
-Done processing ./app/PIDController.cpp
+cpplint $( find . -name \*.h -or -name \*.cpp | grep -vE -e "^./build/" -e "^./vendor/" -e "^./docs/" -e "^./results" )
+Done processing ./app/AutoBot.cpp
+Done processing ./app/Detector.cpp
+Done processing ./app/HumanTracker.cpp
+Done processing ./app/Utils.cpp
 Done processing ./app/main.cpp
+Done processing ./include/AutoBot.h
+Done processing ./include/Detector.h
+Done processing ./include/HumanTracker.h
+Done processing ./include/Utils.h
 Done processing ./test/main.cpp
 Done processing ./test/test.cpp
 
