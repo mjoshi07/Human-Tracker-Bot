@@ -53,5 +53,6 @@ Image taken from this [article](https://medium.com/@luanaebio/detecting-people-w
 * Pre-trained model (yoloV4-tiny)
 
 ## TODO
+* make changes in uml and activity diagrams after cpplint errors fix
 * Complete Implementation
 * Cppcheck and Cpplint
