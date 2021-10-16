@@ -1,8 +1,6 @@
 cmake_minimum_required(VERSION 3.2.1)
 project (human-Tracker)
 
-# option( USE_CUSTOM_BUILD_OPENCV    "" ON )
-
 # Add project cmake modules to path.
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${PROJECT_SOURCE_DIR}/cmake)
 
@@ -16,7 +14,6 @@ if (COVERAGE)
     set(LCOV_REMOVE_EXTRA "'vendor/*'")
     setup_target_for_coverage(code_coverage test/human-tracker-test coverage)
     set(COVERAGE_SRCS app/AutoBot.cpp app/Detector.cpp app/HumanTracker.cpp app/Utils.cpp include/AutoBot.h include/Detector.h include/HumanTracker.h include/Utils.h)
-
     SET(CMAKE_CXX_FLAGS "-g -O0 -fprofile-arcs -ftest-coverage")
     SET(CMAKE_C_FLAGS "-g -O0 -fprofile-arcs -ftest-coverage")
     SET(CMAKE_EXE_LINKER_FLAGS "-fprofile-arcs -ftest-coverage")

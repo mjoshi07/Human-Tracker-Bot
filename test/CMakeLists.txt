@@ -1,5 +1,4 @@
 set(GTEST_SHUFFLE 1)
-find_package(OpenCV)
 
 add_executable(
     human-tracker-test
@@ -15,4 +14,3 @@ target_include_directories(human-tracker-test PUBLIC ../vendor/googletest/google
                                            ${CMAKE_SOURCE_DIR}/include
 					${OpenCV_INCLUDE_DIRS})
 target_link_libraries(human-tracker-test PUBLIC gtest ${OpenCV_LIBS})
-
