@@ -151,6 +151,58 @@ void acme::Detector::InitModel(double conf, const std::vector<std::string> &c) {
     out_names_ = network_.getUnconnectedOutLayersNames();
 }
 
-void acme::Detector::WarmUp() {}
+void acme::Detector::WarmUp() {
+    cv::Mat temp = cv::Mat::zeros(cv::Size(416, 416), CV_8UC3);
+    auto detections = Detect(temp);
+}
 
-std::vector<acme::Detection> acme::Detector::ProcessNet(const cv::Size &s) {}
+std::vector<acme::Detection> acme::Detector::ProcessNet(const cv::Size &s) {
+    std::vector<acme::Detection> detections;
+    std::vector<std::string> class_names;
+    std::vector<float> confidences;
+    std::vector<cv::Rect> bboxes;
+    std::vector<int> indices;
+
+    for ( cv::Mat &output : outputs_ ) {
+        auto *data = reinterpret_cast<float*>(output.data);
+        for ( int i = 0 ; i < output.rows ; i++, data += output.cols ) {
+            int x_center =  static_cast<int>(data[0]*s.width);
+            int y_center = static_cast<int>(data[1]*s.height);
+            cv::Mat scores = output.row(i).colRange(5, output.cols);
+            cv::Point class_id_point;
+            double confidence;
+            cv::minMaxLoc(scores, 0, &confidence, 0, &class_id_point);
+            if ( confidence > conf_thresh_ ) {
+                int class_id = class_id_point.x;
+                std::string cl4ss = all_classes_[class_id];
+
+                auto iter = std::find(classes_.begin(), classes_.end(), cl4ss);
+                if ( iter != classes_.end() ) {
+                    x_center = std::max(0, x_center);
+                    y_center =  std::max(0, y_center);
+                    int width = static_cast<int>(data[2]*s.width);
+                    int height = static_cast<int>(data[3]*s.height);
+
+
+                    int x_left = x_center - width / 2;
+                    int y_top = y_center - height / 2;
+                    cv::Rect bbox(x_left, y_top, width, height);
+
+                    class_names.push_back(cl4ss);
+                    confidences.push_back(static_cast<float>(confidence));
+                    bboxes.push_back(bbox);
+                }
+            }
+        }
+    }
+    cv::dnn::NMSBoxes(bboxes, confidences, conf_thresh_, nms_thresh_, indices);
+
+    for ( int index : indices ) {
+        cv::Rect bbox = bboxes[index];
+        double conf = static_cast<double>(confidences[index]);
+        std::string name = class_names[index];
+        Detection box(bbox, conf, name);
+        detections.push_back(box);
+    }
+    return detections;
+}
