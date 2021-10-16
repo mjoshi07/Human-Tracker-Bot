@@ -70,25 +70,86 @@ std::vector<acme::Detection> acme::Detector::Detect(const cv::Mat& frame) {
     }
     return detections;
 }
-void acme::Detector::SetClasses(const std::vector<std::string> &classes) {}
 
-void acme::Detector::setNmsThresh(const double nms_thresh) {}
+void acme::Detector::SetClasses(const std::vector<std::string> &classes) {
+    classes_ = classes;
+}
 
-void acme::Detector::setInputWIdth(const int input_width) {}
+void acme::Detector::SetNmsThresh(const double nms_thresh) {
+    nms_thresh_ = nms_thresh;
+}
 
-void acme::Detector::setInputHeight(const int input_height) {}
+void acme::Detector::SetInputWIdth(const int input_width) {
+    input_width_ = input_width;
+}
 
-void acme::Detector::setSwapRB(const bool swap_rb) {}
+void acme::Detector::SetInputHeight(const int input_height) {
+    input_height_ = input_height;
+}
 
-void acme::Detector::setCropImg(const bool crop_img) {}
+void acme::Detector::SetScaleFactor(const double scale_factor) {
+    scale_ = scale_factor;
+}
 
-void acme::Detector::setBackend(const int backend) {}
+void acme::Detector::SetSwapRB(const bool swap_rb) {
+    swap_ = swap_rb;
+}
 
-void acme::Detector::setTarget(const int target) {}
+void acme::Detector::SetMeanToSubtract(const cv::Scalar &mean) {
+    mean_ = mean;
+}
 
-void acme::Detector::setNumChannels(const int num_channels) {}
+void acme::Detector::SetCropImg(const bool crop_img) {
+    crop_ = crop_img;
+}
 
-void acme::Detector::initModel(int backend, int target) {}
+void acme::Detector::SetBackend(const int backend) {
+    backend_ = backend;
+}
+
+void acme::Detector::SetTarget(const int target) {
+    target_ = target;
+}
+
+void acme::Detector::SetNumChannels(const int num_channels) {
+    num_channels_ = num_channels;
+}
+
+void acme::Detector::InitModel(double conf, const std::vector<std::string> &c) {
+    conf_thresh_ = conf;
+    classes_ = c;
+    nms_thresh_ = 0.4;
+    input_width_ = 416;
+    input_height_ = 416;
+    size_ = cv::Size(input_width_, input_height_);
+    scale_ = 0.00392157;
+    mean_ = cv::Scalar();
+    swap_ = true;
+    crop_ = false;
+    backend_ = 0;
+    target_ = 0;
+    num_channels_ = 3;
+    all_classes_ = {"person", "bicycle", "car", "motorbike", "aeroplane",
+     "bus", "train", "truck", "boat", "traffic light", "fire hydrant",
+      "stop sign", "parking meter", "bench", "bird", "cat", "dog", "horse",
+      "sheep", "cow", "elephant", "bear", "zebra", "giraffe", "backpack",
+      "umbrella", "handbag", "tie", "suitcase", "frisbee", "skis", "snowboard",
+      "sports ball", "kite", "baseball bat", "baseball glove", "skateboard",
+      "surfboard", "tennis racket", "bottle", "wine glass", "cup", "fork",
+      "knife", "spoon", "bowl", "banana", "apple", "sandwich", "orange",
+      "broccoli", "carrot", "hot dog", "pizza", "donut", "cake", "chair",
+      "sofa", "pottedplant", "bed", "diningtable", "toilet", "tvmonitor",
+      "laptop", "mouse", "remote", "keyboard", "cell phone", "microwave",
+      "oven", "toaster", "sink", "refrigerator", "book", "clock", "vase",
+      "scissors", "teddy bear", "hair drier", "toothbrush" };
+
+    std::string weights_path = "..//data//yolov4-tiny.weights";
+    std::string config_path = "..//data//yolov4-tiny.cfg";
+    network_ = cv::dnn::readNet(weights_path, config_path);
+    network_.setPreferableBackend(backend_);
+    network_.setPreferableTarget(target_);
+    out_names_ = network_.getUnconnectedOutLayersNames();
+}
 
 void acme::Detector::WarmUp() {}
 
