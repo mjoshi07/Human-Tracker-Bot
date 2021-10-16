@@ -34,17 +34,35 @@
  */
 
 
-#include <HumanTracker.h>
+#include <HumanTracker.hpp>
 
 
-acme::HumanTracker::HumanTracker(double confidence) {}
+acme::HumanTracker::HumanTracker(double confidence) {
+    InitParams(confidence);
+}
 
 acme::HumanTracker::~HumanTracker() {}
 
-void acme::HumanTracker::InitParams(double confidence) {}
-
-std::vector<cv::Rect> acme::HumanTracker::TrackHumans(const cv::Mat &frame) {
-    return std::vector<cv::Rect>();
+void acme::HumanTracker::InitParams(double confidence) {
+    conf_thresh_ = confidence;
+    double detector_conf(0.2);
+    std::vector<std::string> classes{"person"};
+    detector_ = std::make_unique<acme::Detector>(detector_conf, classes);
+    humans_.clear();
+    tracker_ = cv::TrackerKCF::create();
 }
 
-void acme::HumanTracker::ProcessFrame(const cv::Mat &frame) {}
+std::vector<cv::Rect> acme::HumanTracker::TrackHumans(const cv::Mat &frame) {
+    humans_.clear();
+    std::vector<acme::Detection> output = detector_->Detect(frame);
+    RemoveNoise(output);
+    return humans_;
+}
+
+void acme::HumanTracker::RemoveNoise(const std::vector<acme::Detection> &d) {
+    for ( acme::Detection detect : d ) {
+        if (detect.confidence >= conf_thresh_) {
+            humans_.push_back(detect.bbox);
+        }
+    }
+}
