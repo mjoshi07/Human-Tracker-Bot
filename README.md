@@ -52,6 +52,9 @@ Image taken from this [article](https://medium.com/@luanaebio/detecting-people-w
 * External Library (Opencv >= 4.5.0)
 * Pre-trained model (yoloV4-tiny)
 
+## Development Process
+Following the Agile Iterative Process for Development, during the phase 1 we have fixed the roles of driver and navigator. Product backlog, iteration backlog and worklog can be found [here](https://docs.google.com/spreadsheets/d/13HgjlZA4aaiTQI1IV8A2gB09YpjLVGgOBiorfW3B0pc/edit?usp=sharing)
+
 ## TODO
 * make changes in uml and activity diagrams after cpplint errors fix
 * Complete Implementation
