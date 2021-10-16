@@ -1,11 +1,10 @@
 /**
  * @file test.cpp
- * @author Mayank Joshi (driver) and Naitri Rajyaguru (navigator)
- * @brief Unit Test for Acme Robotics - Human Tracker
+ * @author Phase 1 - Mayank Joshi (driver) and Naitri Rajyaguru (navigator)
+ * @brief Unit Tests for Acme Robotics - Human Tracker
  * @version 0.1
- * @date 2021-10-05
  * 
- * @copyright Copyright (c) 2021
+ * @copyright MIT License
  * 
  */
 
@@ -14,68 +13,101 @@
 #include <opencv2/core.hpp>
 
 
-#include <AutoBot.h>
-#include <HumanTracker.h>
-#include <Detector.h>
-#include <Utils.h>
+#include <AutoBot.hpp>
+#include <HumanTracker.hpp>
+#include <Detector.hpp>
+#include <Utils.hpp>
 
 
-std::unique_ptr<acme::AutoBot> robot_object;
-std::unique_ptr<acme::HumanTracker> tracker_object;
-std::unique_ptr<acme::Detector> detect_object;
+acme::AutoBot robot_object(0, 0);
+acme::HumanTracker tracker_object(0.4);
+std::vector<std::string> classes = {};
+acme::Detector detect_object(0.4, classes);
 acme::Utils utils_object;
 
 TEST(AutoBot, Run) {
     acme::Mode mode = acme::Mode::kRealTime;
-    ASSERT_NO_THROW(robot_object->Run(mode));
+    robot_object.SetTestCounter(1);
+    robot_object.SetShowWindow(false);
+    ASSERT_NO_THROW(robot_object.Run(mode));
 
     mode = acme::Mode::kTesting;
-    ASSERT_NO_THROW(robot_object->Run(mode));
+    ASSERT_NO_THROW(robot_object.Run(mode));
 
     mode = acme::Mode::kTraining;
-    ASSERT_NO_THROW(robot_object->Run(mode));
+    ASSERT_NO_THROW(robot_object.Run(mode));
 }
 TEST(AutoBot, SetRobotPose) {
     acme::Pose p;
-    ASSERT_NO_THROW(robot_object->SetRobotPose(p));
+    ASSERT_NO_THROW(robot_object.SetRobotPose(p));
 }
+TEST(AutoBot, SetCameraPose) {
+    acme::Pose p;
+    ASSERT_NO_THROW(robot_object.SetCameraPose(p));
+}
+TEST(AutoBot, SetFocalLength) {
+    double fl = 0.036;
+    ASSERT_NO_THROW(robot_object.SetFocalLength(fl));
+}
+TEST(AutoBot, SetProcessingSize) {
+    int w = 416;
+    int h = 416;
+    cv::Size s(w, h);
+    ASSERT_NO_THROW(robot_object.SetProcessingSize(w, h));
+    ASSERT_NO_THROW(robot_object.SetProcessingSize(s));
+}
+TEST(AutoBot, GetObjects) {
+    ASSERT_EQ(0, static_cast<int>(robot_object.GetObjects().size()));
+}
+TEST(AutoBot, SetHumanHeight) {
+    double height = 1.6;
+    ASSERT_NO_THROW(robot_object.SetHumanHeight(height));
+}
+
 TEST(HumanTracker, TrackHumans) {
     cv::Mat img;
-    tracker_object = std::make_unique<acme::HumanTracker>(0.4);
-    auto output = tracker_object->TrackHumans(img);
+    auto output = tracker_object.TrackHumans(img);
     ASSERT_EQ(static_cast<int>(output.size()), 0);
 }
 TEST(Detector, Detect) {
     cv::Mat img;
-    auto output = detect_object->Detect(img);
+    auto output = detect_object.Detect(img);
     ASSERT_EQ(static_cast<int>(output.size()), 0);
 }
 TEST(Detector, SetClassesToDetect) {
-    ASSERT_NO_THROW(detect_object->SetClasses());
+    ASSERT_NO_THROW(detect_object.SetClasses());
 }
 TEST(Detector, setNmsThresh) {
-    ASSERT_NO_THROW(detect_object->setNmsThresh(0.4));
+    ASSERT_NO_THROW(detect_object.SetNmsThresh(0.4));
 }
 TEST(Detector, setInputWIdth) {
-    ASSERT_NO_THROW(detect_object->setInputWIdth(640));
+    ASSERT_NO_THROW(detect_object.SetInputWIdth(640));
 }
 TEST(Detector, setInputHeight) {
-    ASSERT_NO_THROW(detect_object->setInputHeight(480));
+    ASSERT_NO_THROW(detect_object.SetInputHeight(480));
 }
 TEST(Detector, setSwapRB) {
-    ASSERT_NO_THROW(detect_object->setSwapRB(true));
+    ASSERT_NO_THROW(detect_object.SetSwapRB(true));
 }
 TEST(Detector, setCropImg) {
-    ASSERT_NO_THROW(detect_object->setCropImg(false));
+    ASSERT_NO_THROW(detect_object.SetCropImg(false));
 }
 TEST(Detector, setBackend) {
-    ASSERT_NO_THROW(detect_object->setBackend(0));
+    ASSERT_NO_THROW(detect_object.SetBackend(0));
 }
 TEST(Detector, setTarget) {
-    ASSERT_NO_THROW(detect_object->setTarget(0));
+    ASSERT_NO_THROW(detect_object.SetTarget(0));
 }
 TEST(Detector, setNumChannels) {
-    ASSERT_NO_THROW(detect_object->setNumChannels(3));
+    ASSERT_NO_THROW(detect_object.SetNumChannels(3));
+}
+TEST(Detector, SetScaleFactor) {
+    double sf = 1.0;
+    ASSERT_NO_THROW(detect_object.SetScaleFactor(sf));
+}
+TEST(Detector, SetMeanToSubtract) {
+    cv::Scalar mean = cv::Scalar();
+    ASSERT_NO_THROW(detect_object.SetMeanToSubtract(mean));
 }
 TEST(Utils, FitWithinSize) {
     cv::Point p = cv::Point();
@@ -104,11 +136,11 @@ TEST(Utils, GetBboxArea) {
     ASSERT_EQ(output, -1.0);
 }
 TEST(Utils, ResizeImage) {
-    cv::Mat img;
-    cv::Size s = cv::Size();
+    cv::Mat img = cv::Mat::zeros(cv::Size(10, 10), CV_8UC3);
+    cv::Size s = cv::Size(20, 20);
     auto output  = utils_object.ResizeImage(img, s);
-    ASSERT_EQ(static_cast<int>(output.cols), 1);
-    ASSERT_EQ(static_cast<int>(output.rows), 1);
+    ASSERT_EQ(static_cast<int>(output.cols), 20);
+    ASSERT_EQ(static_cast<int>(output.rows), 20);
 }
 TEST(Utils, CalculateIOU) {
     cv::Rect r1 = cv::Rect();
