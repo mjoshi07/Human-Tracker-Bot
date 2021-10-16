@@ -147,7 +147,13 @@ TEST(Utils, FitWithinSize) {
     ASSERT_EQ(output2.width, -1);
     ASSERT_EQ(output2.height, -1);
 }
-
+TEST(Utils, DrawBbox) {
+    cv::Mat img = cv::Mat::zeros(cv::Size(10, 10), CV_8UC3);
+    std::vector<cv::Rect> boxes = {};
+    auto output  = utils_object.DrawBbox(img, boxes);
+    ASSERT_EQ(static_cast<int>(output.cols), 10);
+    ASSERT_EQ(static_cast<int>(output.rows), 10);
+}
 TEST(Utils, GetBboxCenter) {
     cv::Rect r = cv::Rect();
     auto output = utils_object.GetBboxCenter(r);
