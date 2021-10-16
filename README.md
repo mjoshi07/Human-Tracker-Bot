@@ -24,6 +24,13 @@ We plan to use YoloV4-tiny, a pre-trained model based on [Darknet framework](htt
 
 Image taken from this [article](https://medium.com/@luanaebio/detecting-people-with-yolo-and-opencv-5c1f9bc6a810)
 
+## Deliverables
+* Project: Acme Robotics Human(s) obstacle detector and tracker in robot reference frame
+* Overview of prosposed work, including risks, mitigation, timeline
+* UML and activity diagrams
+* Travis code coverage setup with Coveralls
+* Developer-level documentation
+* Phase 1 - implementation of first version of the whole module
 
 ## Potential Risks and Mitigation
 * The model is trained on [MS COCO dataset](https://cocodataset.org/#home) which contains RGB images therefore would not able to work with infrared cameras or in low light. Training on additional low light and data from infrared camera can make the model more robust
