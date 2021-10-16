@@ -16,6 +16,3 @@ target_include_directories(human-tracker-test PUBLIC ../vendor/googletest/google
 					${OpenCV_INCLUDE_DIRS})
 target_link_libraries(human-tracker-test PUBLIC gtest ${OpenCV_LIBS})
 
-file(GLOB_RECURSE HEADER_FILES include/*.h include/*.hpp)
-file(GLOB_RECURSE SOURCES src/*.c src/*.cpp src/*.h src/*.hpp)
-

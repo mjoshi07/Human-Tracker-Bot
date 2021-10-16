@@ -21,42 +21,75 @@
 #include <opencv2/dnn/dnn.hpp>
 #include <opencv2/dnn/shape_utils.hpp>
 
-#include <Utils.h>
+#include <Utils.hpp>
 
 
 namespace acme {
+struct Detection {
+      Detection(cv::Rect box, double conf, const std::string &n) :name(n) {
+            bbox = box;
+            confidence = conf;
+      }
+      cv::Rect bbox;
+      double confidence;
+      std::string name;
+};
+
 class Detector {
  public:
-    Detector(double conf, const std::vector<std::string> &classes);
-    ~Detector();
+      Detector(double conf, const std::vector<std::string> &classes);
 
-       std::vector<cv::Rect> Detect(const cv::Mat& frame);
-       void SetClasses(const std::vector<std::string> &classes = {});
-       void setNmsThresh(const double nms_thresh);
-       void setInputWIdth(const int input_width);
-       void setInputHeight(const int input_height);
-       void setSwapRB(const bool swap_rb);
-       void setCropImg(const bool crop_img);
-       void setBackend(const int backend);
-       void setTarget(const int target);
-       void setNumChannels(const int num_channels);
+      ~Detector();
+
+      std::vector<acme::Detection> Detect(const cv::Mat& frame);
+
+      void SetClasses(const std::vector<std::string> &classes = {});
+
+      void SetNmsThresh(const double nms_thresh);
+
+      void SetInputWIdth(const int input_width);
+
+      void SetInputHeight(const int input_height);
+
+      void SetScaleFactor(const double scale_factor);
+
+      void SetMeanToSubtract(const cv::Scalar &mean);
+
+      void SetSwapRB(const bool swap_rb);
+
+      void SetCropImg(const bool crop_img);
+
+      void SetBackend(const int backend);
+
+      void SetTarget(const int target);
+
+      void SetNumChannels(const int num_channels);
 
  private:
-       void WarmUp();
-       void initModel(int backend, int target);
+      void WarmUp();
+
+      void InitModel(double conf, const std::vector<std::string> &c);
+
+      std::vector<acme::Detection> ProcessNet(const cv::Size &s);
 
  private:
-        double conf_threshold_;
-        std::vector<std::string> classes_;
-        double nms_threshold_;
-        double input_width_;
-        double input_height_;
-        bool swap_rb_;
-        bool crop_img_;
-        int backend_;
-        int target_;
-        int num_channels_;
-        std::unique_ptr<cv::dnn::Net> network_;
+      double conf_thresh_;
+      std::vector<std::string> all_classes_;
+      std::vector<std::string> classes_;
+      double nms_thresh_;
+      double input_width_;
+      double input_height_;
+      cv::Size size_;
+      double scale_;
+      cv::Scalar mean_;
+      bool swap_;
+      bool crop_;
+      int backend_;
+      int target_;
+      int num_channels_;
+      cv::dnn::Net network_;
+      std::vector<std::string> out_names_;
+      std::vector<cv::Mat> outputs_;
 };
 }  // namespace acme
 #endif  // INCLUDE_DETECTOR_H_
