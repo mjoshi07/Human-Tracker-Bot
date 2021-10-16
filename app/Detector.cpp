@@ -34,17 +34,42 @@
  */
 
 
-#include <Detector.h>
+#include <Detector.hpp>
+
 
 
 acme::Detector::Detector(double conf, const std::vector<std::string> &classes) {
+    /// initializes default parameter and creates the model network
+    InitModel(conf, classes);
+
+    /// run the model once before actually performing detection on video frame
+    WarmUp();
 }
 acme::Detector::~Detector() {}
 
-std::vector<cv::Rect> acme::Detector::Detect(const cv::Mat& frame) {
-    return std::vector<cv::Rect>();
-}
+std::vector<acme::Detection> acme::Detector::Detect(const cv::Mat& frame) {
+    /// create a vector to store Detection objects
+    std::vector<acme::Detection> detections = {};
 
+    /// create a Mat to store the input blob
+    cv::Mat b;
+    if ( !frame.empty() ) {
+        /// create a blob for the model to run a forward pass
+        b = cv::dnn::blobFromImage(frame, scale_, size_, mean_, swap_, crop_);
+
+        /// set input for the model
+        network_.setInput(b);
+        outputs_.clear();
+
+        /// run a forward pass
+        network_.forward(outputs_, out_names_);
+        cv::Size img_size = frame.size();
+
+        /// process the outputs of the model forward pass
+        detections = ProcessNet(img_size);
+    }
+    return detections;
+}
 void acme::Detector::SetClasses(const std::vector<std::string> &classes) {}
 
 void acme::Detector::setNmsThresh(const double nms_thresh) {}
@@ -67,3 +92,4 @@ void acme::Detector::initModel(int backend, int target) {}
 
 void acme::Detector::WarmUp() {}
 
+std::vector<acme::Detection> acme::Detector::ProcessNet(const cv::Size &s) {}
