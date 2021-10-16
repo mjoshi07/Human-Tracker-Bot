@@ -33,10 +33,10 @@ Image taken from this [article](https://medium.com/@luanaebio/detecting-people-w
 ## UML Diagram
 * The class dependency diagram of the proposed design:
 
-![image](https://github.com/mjoshi07/Acme-Robotics-Human-Tracker/blob/main/UML_Diagrams/uml_diagram.drawio.png)
+![image](https://github.com/mjoshi07/Acme-Robotics-Human-Tracker/blob/dev_phase1/UML/revised/UML_class_diagram.png)
 
 * Activity diagram
-![image](https://github.com/mjoshi07/Acme-Robotics-Human-Tracker/blob/main/UML_Diagrams/activity_diagram.drawio.png)
+![image](https://github.com/mjoshi07/Acme-Robotics-Human-Tracker/blob/dev_phase1/UML/revised/Activity_flow_diagram.png)
 
 * Quadchart, Product backlog, Proposal of 2 pages can be found ![here](https://github.com/mjoshi07/Acme-Robotics-Human-Tracker/tree/main/Proposal_documentation)
 
