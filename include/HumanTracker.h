@@ -15,24 +15,30 @@
 
 #include <vector>
 #include <memory>
-
-#include <Detector.h>
+ 
 #include <opencv2/tracking.hpp>
 #include <opencv2/core/ocl.hpp>
-
+ 
+#include <Detector.hpp>
+ 
 namespace acme {
+ 
 class HumanTracker {
  public:
   explicit HumanTracker(double confidence);
+ 
   ~HumanTracker();
-
+ 
   std::vector<cv::Rect> TrackHumans(const cv::Mat &frame);
-
+ 
  private:
   void InitParams(double confidence);
-  void ProcessFrame(const cv::Mat &frame);
-
+ 
+  void RemoveNoise(const std::vector<acme::Detection>& detections);
+ 
  private:
+  double conf_thresh_;
+  std::vector<cv::Rect> humans_;
   std::unique_ptr<acme::Detector> detector_;
   cv::Ptr<cv::Tracker> tracker_;
 };
