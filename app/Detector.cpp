@@ -193,7 +193,7 @@ void acme::Detector::WarmUp() {
     cv::Mat temp = cv::Mat::zeros(cv::Size(416, 416), CV_8UC3);
 
     /// run Detector on the temporary Mat as a warmup
-    auto detections = Detect(temp);
+    Detect(temp);
 }
 
 std::vector<acme::Detection> acme::Detector::ProcessNet(const cv::Size &s) {

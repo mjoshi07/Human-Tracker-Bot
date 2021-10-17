@@ -122,7 +122,7 @@ void acme::AutoBot::RunRealTime() {
     unsigned int frame_counter = 0;
 
     /// initialize an empty vector to store bounding boxes
-    std::vector<cv::Rect> human_tracks = {};
+    std::vector<cv::Rect> human_tracks{};
 
     /// create a variable to store the source frame size
     cv::Size src_size;
