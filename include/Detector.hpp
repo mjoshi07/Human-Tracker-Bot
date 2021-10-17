@@ -53,10 +53,8 @@ namespace acme {
  *  
  */
 struct Detection {
-      Detection(cv::Rect box, double conf, const std::string &n) :name(n) {
-            bbox = box;
-            confidence = conf;
-      }
+      Detection(cv::Rect box, double conf, const std::string &n) :
+      name(n), bbox(box), confidence(conf) {}
       cv::Rect bbox;
       double confidence;
       std::string name;

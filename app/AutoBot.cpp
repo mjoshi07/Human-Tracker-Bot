@@ -102,9 +102,7 @@ void acme::AutoBot::CollectTrainData() {}
 
 void acme::AutoBot::DetectTestData() {}
 
-std::vector<acme::Pose>  acme::AutoBot::RunRealTime() {
-    return std::vector<acme::Pose>();
-}
+
 
 void acme::AutoBot::RunRealTime() {
     /// if calib_factor == default value, calculate calib_factor

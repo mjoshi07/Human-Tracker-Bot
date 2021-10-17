@@ -42,7 +42,7 @@ int main() {
     acme::Mode mode = acme::Mode::kRealTime;
 
     /// initialize AutoBot class object with camera id and calib factor
-    acme::AutoBot humanTrackingRobot(10, 0.5);
+    acme::AutoBot humanTrackingRobot(0, 0.5);
 
     /// call Run method with the selected mode of operation
     humanTrackingRobot.Run(mode);
