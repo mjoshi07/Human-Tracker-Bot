@@ -58,8 +58,45 @@ void acme::AutoBot::Run(const Mode mode) {
             break;
     }
 }
+}
 
-void acme::AutoBot::SetRobotPose(const Pose &robo_pose) {}
+void acme::AutoBot::SetRobotPose(const Pose &robo_pose) {
+    robot_pose_ = robo_pose;
+}
+
+void acme::AutoBot::SetCameraPose(const Pose &camera_pose) {
+    camera_pose_ = camera_pose;
+}
+
+void acme::AutoBot::SetFocalLength(const double fl) {
+    focal_length_ = fl;
+}
+
+void acme::AutoBot::SetProcessingSize(const int w, const int h) {
+    cv::Size s = cv::Size(w, h);
+    SetProcessingSize(s);
+}
+
+void acme::AutoBot::SetProcessingSize(const cv::Size &s) {
+    p_size_ = s;
+}
+
+void acme::AutoBot::SetHumanHeight(const double h) {
+    avg_human_height_ = h;
+}
+
+void acme::AutoBot::SetShowWindow(const bool show_window) {
+    show_window_ = show_window;
+}
+
+void acme::AutoBot::SetTestCounter(const int counter) {
+    test_counter_ = counter;
+}
+
+std::vector<acme::Pose> acme::AutoBot::GetObjects() {
+    return std::vector<acme::Pose>();
+}
+
 
 void acme::AutoBot::CollectTrainData() {}
 
