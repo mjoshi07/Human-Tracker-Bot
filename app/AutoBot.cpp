@@ -106,6 +106,80 @@ std::vector<acme::Pose>  acme::AutoBot::RunRealTime() {
     return std::vector<acme::Pose>();
 }
 
+void acme::AutoBot::RunRealTime() {
+    /// if calib_factor == default value, calculate calib_factor
+    if (calib_factor_ == -1) {
+        Calibrate();
+    }
+
+    /// setup the display window name
+    const std::string kWindowName = "Display";
+
+    if ( show_window_ ) {
+        /// create a display window if show window is true
+        cv::namedWindow(kWindowName, cv::WINDOW_FREERATIO);
+    }
+
+    /// initialize a variable to store frame counter with 0
+    unsigned int frame_counter = 0;
+
+    /// initialize an empty vector to store bounding boxes
+    std::vector<cv::Rect> human_tracks = {};
+
+    /// create a variable to store the source frame size
+    cv::Size src_size;
+
+    /// run an indefinite loop to read video stream
+    while (true) {
+        /// create a variable to store the source video frame
+        cv::Mat src_frame;
+        if ( cap_.read(src_frame) ) {
+            if ( frame_counter == 0 ) {
+                /// calculate the source frame size once
+                src_size = src_frame.size();
+            }
+
+            /// resize src frame according to processing size
+            p_frame_ = acme::Utils::ResizeImage(src_frame, p_size_);
+
+            /// get bboxes of objects tracked by HumanTracker class in frame
+            human_tracks = human_tracker_->TrackHumans(p_frame_);
+
+            /// draw bboxes on the frame
+            p_frame_ = Utils::DrawBbox(p_frame_, human_tracks);
+
+            /// convert the bboxes from img plane to robot ref frame
+            ToRobotFrame(human_tracks);
+
+            /// resize process frame back to src frame size
+            p_frame_ = acme::Utils::ResizeImage(p_frame_, src_size);
+
+            if ( show_window_ ) {
+                /// if show window is true, display the current video frame
+                cv::imshow(kWindowName, p_frame_);
+                char k = cv::waitKey(1);
+                if ( k == 27 || k == 'q' ) {
+                    /// EXIT if user hits 'Esc' or 'q' on the keyboard
+                    return;
+                }
+            }
+
+            /// increment the frame counter
+            frame_counter++;
+
+            /// for Testing purpose only, run the loop for test_counter times
+            if ( test_counter_ != -1 ) {
+                if ( static_cast<int>(frame_counter) > test_counter_ ) {
+                    return;
+                }
+            }
+        } else {
+            std::cout << "Cannot read frame" << std::endl;
+            return;
+        }
+    }
+}
+
 void acme::AutoBot::Calibrate() {}
 
 
