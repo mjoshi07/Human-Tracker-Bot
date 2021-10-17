@@ -240,3 +240,26 @@ void acme::AutoBot::InitParams(int camera_id, double calib_factor) {
     /// set test counter default value
     test_counter_ = -1;
 }
+
+void acme::AutoBot::ToRobotFrame(const std::vector<cv::Rect> &tracks) {
+    objects_in_frame_.clear();
+    if ( tracks.size() ) {
+        /// create a variable to store Pose of the detected object
+        acme::Pose obj_pose;
+        for ( cv::Rect box : tracks ) {
+            /// convert from img plane to Pose(x, y, z) using calib_factor
+            obj_pose = acme::Utils::PixelsToPose(box, calib_factor_);
+
+            // from world coordinates to camera coordinates using homogeneous
+            // CHECK UTILS GET TRANSFORMED POSE METHOD
+
+            /// convert from camera Pose to Pose
+            obj_pose.x -= robot_pose_.x;
+            obj_pose.y -= robot_pose_.y;
+            obj_pose.z -= robot_pose_.z;
+
+            /// store detected obj Pose in a vector
+            objects_in_frame_.push_back(obj_pose);
+        }
+    }
+}
