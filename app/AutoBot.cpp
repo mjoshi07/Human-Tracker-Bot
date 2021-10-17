@@ -58,7 +58,7 @@ void acme::AutoBot::Run(const Mode mode) {
             break;
     }
 }
-}
+
 
 void acme::AutoBot::SetRobotPose(const Pose &robo_pose) {
     robot_pose_ = robo_pose;
