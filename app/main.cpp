@@ -23,23 +23,31 @@
  ******************************************************************************/
 
 /**
- * @file main.cpp
- * @author Mayank Joshi (driver) and Naitri Rajyaguru (navigator)
- * @brief main function for Acme Robotics - Human Tracker
+ * @file AutoBot.cpp
+ * @author Phase:1 Naitri Rajyaguru(driver) and Mayank Joshi(navigator)
+ * @brief AutoBot class definition for Acme Robotics - Human Tracker
  * @version 0.1
- * @date 2021-10-05
+ * @date 2021-10-17
  * 
  * @copyright Copyright (c) 2021
  * 
  */
 
 
-#include <AutoBot.h>
 
-int main(int argc, char **argv) {
+#include <AutoBot.hpp>
+
+int main() {
+    /// define on which mode the module has to operate
     acme::Mode mode = acme::Mode::kRealTime;
-    acme::AutoBot humanTrackingRobot(false, 0.5);
+
+    /// initialize AutoBot class object with camera id and calib factor
+    acme::AutoBot humanTrackingRobot(0, 0.5);
+
+    /// call Run method with the selected mode of operation
     humanTrackingRobot.Run(mode);
+
+    /// print a success message if module exited without any error
     std::cout << "Successfully Created Acme AutoBot" << std::endl;
     return 0;
 }

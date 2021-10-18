@@ -53,14 +53,13 @@ namespace acme {
  *  
  */
 struct Detection {
-      Detection(cv::Rect box, double conf, const std::string &n) :name(n) {
-            bbox = box;
-            confidence = conf;
-      }
+      Detection(cv::Rect box, double conf, const std::string &n) :
+      bbox(box), confidence(conf), name(n) {}
       cv::Rect bbox;
       double confidence;
       std::string name;
 };
+
 
 /**
  * @brief Detector class to get detections on an image

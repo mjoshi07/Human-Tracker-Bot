@@ -45,27 +45,65 @@ cv::Rect acme::Utils::FitWithinSize(const cv::Rect &b, const cv::Size &s) {
 }
 
 cv::Mat acme::Utils::DrawBbox(cv::Mat i, const std::vector<cv::Rect> &b) {
+    /// creating a copy of frame
     cv::Mat frame = i.clone();
+
+    /// set color for Bbox
     cv::Scalar color = cv::Scalar(0, 0, 255);
+
+    /// set color for label x
     cv::Scalar l_color = cv::Scalar::all(255);
-    int counter(0);
+
+    /// initialize ID for each box
+    int id(0);
+
     std::string label;
+
+    /// initialize font type
     int f_face(0);
+
+    /// initialize font scale
     double f_scale(1);
+
+    /// variable to store label point
     cv::Point l_pt;
+    /// variable to store label top point
     cv::Point top_pt;
+    /// variable to store label bottom point
     cv::Point bottom_pt;
+
+    /// initialize baseline
     int b_line(0);
+
+    /// variable for label size
     cv::Size l_size;
+
     for ( cv::Rect box : b ) {
+        /// draws rectangle on frame
         cv::rectangle(frame, box, color, 2, cv::LINE_AA);
-        counter++;
-        label = std::to_string(counter);
+
+        /// increment ID for next Bbox
+        id++;
+
+        /// converting ID type to string for displaying
+        label = std::to_string(id);
+
+        /// get label size
         l_size = cv::getTextSize(label, f_face, f_scale, 2, &b_line);
+
+        /// get top point for label rectangle
         top_pt = cv::Point(box.x, box.y);
+
+        /// get bottom point for label rectangle
         bottom_pt = cv::Point(box.x + l_size.width, box.y+l_size.height);
+
+        ///  get point for label
         l_pt = cv::Point(box.x, box.y+l_size.height);
+
+        /// draw rectangle for label
         cv::rectangle(frame, top_pt, bottom_pt, color, -1, 16);
+
+        /// display text of label
         cv::putText(frame, label, l_pt, f_face, f_scale, l_color, 2);
     }
     return frame;

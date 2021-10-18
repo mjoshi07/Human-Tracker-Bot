@@ -1,0 +1,8 @@
+<map id="include/Detector.hpp" name="include/Detector.hpp">
+<area shape="rect" id="node1" title="Detector class declaration for Acme Robotics &#45; Human Tracker." alt="" coords="82,5,223,32"/>
+<area shape="rect" id="node2" href="$_detector_8cpp.html" title="Detection class definition for Acme Robotics &#45; Human Tracker." alt="" coords="5,80,127,107"/>
+<area shape="rect" id="node3" href="$_human_tracker_8hpp.html" title="HumanTracker class declaration for Acme Robotics &#45; Human Tracker." alt="" coords="151,80,328,107"/>
+<area shape="rect" id="node4" href="$_human_tracker_8cpp.html" title="HumanTracker class definition for Acme Robotics &#45; Human Tracker." alt="" coords="74,155,231,181"/>
+<area shape="rect" id="node5" href="$_auto_bot_8hpp.html" title="AutoBot class declaration for Acme Robotics &#45; Human Tracker." alt="" coords="255,155,394,181"/>
+<area shape="rect" id="node6" href="$_auto_bot_8cpp.html" title="AutoBot class definition for Acme Robotics &#45; Human Tracker." alt="" coords="265,229,384,256"/>
+</map>
