@@ -49,7 +49,6 @@ Image taken from this [article](https://medium.com/@luanaebio/detecting-people-w
 
 
 
-
 ## Technology 
 * We will be following [AIP](https://en.wikipedia.org/wiki/Agile_software_development) (Agile Iterative Process) and implement the software using [TDD](https://en.wikipedia.org/wiki/Test-driven_development) (Test Driven Development)
 * Quality shall be ensured by unit testing and cppcheck, adhering to [Google C++ style guide](https://google.github.io/styleguide/cppguide.html)
@@ -60,9 +59,7 @@ Image taken from this [article](https://medium.com/@luanaebio/detecting-people-w
 * Pre-trained model (yoloV4-tiny)
 
 ## Development Process
-Following the Agile Iterative Process for Development, during the phase 1 we have fixed the roles of driver and navigator. Product backlog, iteration backlog and worklog can be found [here](https://docs.google.com/spreadsheets/d/13HgjlZA4aaiTQI1IV8A2gB09YpjLVGgOBiorfW3B0pc/edit?usp=sharing)
+Following the Agile Iterative Process for Development, during the phase 1 we have fixed the roles of driver and navigator. Product backlog, iteration backlog and worklog can be found [here](https://docs.google.com/spreadsheets/d/13HgjlZA4aaiTQI1IV8A2gB09YpjLVGgOBiorfW3B0pc/edit?usp=sharing) and Sprint planning with review notes can be found [here] (https://docs.google.com/document/d/1nTnz6AaRJbC92_q_KzS1b5jW93TsNFOlQO8W9rCi3QA/edit?usp=sharing)
 
-## TODO
-* make changes in uml and activity diagrams after cpplint errors fix
-* Complete Implementation
-* Cppcheck and Cpplint
+
+
