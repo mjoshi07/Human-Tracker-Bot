@@ -1,7 +1,7 @@
 # Acme-Robotics-Human-Detector-Tracker
 
-[![Build Status](https://app.travis-ci.com/mjoshi07/Acme-Robotics-Human-Tracker.svg?branch=main)](https://app.travis-ci.com/mjoshi07/Acme-Robotics-Human-Tracker)
-[![Coverage Status](https://coveralls.io/repos/github/mjoshi07/Acme-Robotics-Human-Tracker/badge.svg?branch=main)](https://coveralls.io/github/mjoshi07/Acme-Robotics-Human-Tracker?branch=main)
+[![Build Status](https://app.travis-ci.com/naitri/Acme-Robotics-Human-Tracker.svg?branch=dev_phase1)](https://app.travis-ci.com/naitri/Acme-Robotics-Human-Tracker)
+[![Coverage Status](https://coveralls.io/repos/github/naitri/Acme-Robotics-Human-Tracker/badge.svg?branch=dev_phase1)](https://coveralls.io/github/naitri/Acme-Robotics-Human-Tracker?branch=dev_phase1)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 Detects and Tracks Human in Robot Reference Frame
@@ -24,6 +24,13 @@ We plan to use YoloV4-tiny, a pre-trained model based on [Darknet framework](htt
 
 Image taken from this [article](https://medium.com/@luanaebio/detecting-people-with-yolo-and-opencv-5c1f9bc6a810)
 
+## Deliverables
+* Project: Acme Robotics Human(s) obstacle detector and tracker in robot reference frame
+* Overview of prosposed work, including risks, mitigation, timeline
+* UML and activity diagrams
+* Travis code coverage setup with Coveralls
+* Developer-level documentation
+* Phase 1 - implementation of first version of the whole module
 
 ## Potential Risks and Mitigation
 * The model is trained on [MS COCO dataset](https://cocodataset.org/#home) which contains RGB images therefore would not able to work with infrared cameras or in low light. Training on additional low light and data from infrared camera can make the model more robust
@@ -33,13 +40,46 @@ Image taken from this [article](https://medium.com/@luanaebio/detecting-people-w
 ## UML Diagram
 * The class dependency diagram of the proposed design:
 
-![image](https://github.com/mjoshi07/Acme-Robotics-Human-Tracker/blob/main/UML_Diagrams/uml_diagram.drawio.png)
+![image](https://github.com/mjoshi07/Acme-Robotics-Human-Tracker/blob/dev_phase1/UML/revised/UML_class_diagram.png)
 
 * Activity diagram
-![image](https://github.com/mjoshi07/Acme-Robotics-Human-Tracker/blob/main/UML_Diagrams/activity_diagram.drawio.png)
+![image](https://github.com/mjoshi07/Acme-Robotics-Human-Tracker/blob/dev_phase1/UML/revised/Activity_flow_diagram.png)
 
 * Quadchart, Product backlog, Proposal of 2 pages can be found ![here](https://github.com/mjoshi07/Acme-Robotics-Human-Tracker/tree/main/Proposal_documentation)
 
+## Dependencies
+
+Install OpenCV 4.5.0 and other dependencies using the following command found in Acme-Robotics-Human-Tracker directory
+
+```
+sh requirements.sh
+```
+
+## Build Instructions 
+ With the following steps you can clone this repository in you local machine and build it.
+ '''
+ git clone --recursive https://github.com/mjoshi07/Acme-Robotics-Human-Tracker
+ cd Acme-Robotics-Human-Tracker
+ mkdir build
+ cd build
+ cmake ..
+ make
+ '''
+ To run tests of this module, use the following command
+ 
+ '''
+ ./tests/human-tracker-test
+ '''
+ 
+ 
+ To use, webcam uncomment the line in Autobot.cpp #216 and comment line #219
+ 
+ '''
+ ./app/human-tracker
+ '''
+ 
+## Demo-Phase1
+This is the result of our implementation where we are able to detect n>1 humans and demo video can be found here
 
 
 
@@ -52,7 +92,34 @@ Image taken from this [article](https://medium.com/@luanaebio/detecting-people-w
 * External Library (Opencv >= 4.5.0)
 * Pre-trained model (yoloV4-tiny)
 
-## TODO
-* make changes in uml and activity diagrams after cpplint errors fix
-* Complete Implementation
-* Cppcheck and Cpplint
+## Development Process
+Following the Agile Iterative Process for Development, during the phase 1 we have fixed the roles of driver and navigator. Product backlog, iteration backlog and worklog can be found [here](https://docs.google.com/spreadsheets/d/13HgjlZA4aaiTQI1IV8A2gB09YpjLVGgOBiorfW3B0pc/edit?usp=sharing) and Sprint planning with review notes can be found [here] (https://docs.google.com/document/d/1nTnz6AaRJbC92_q_KzS1b5jW93TsNFOlQO8W9rCi3QA/edit?usp=sharing)
+
+## Generate Doxygen Documentation
+
+To install doxygen run the following command:
+```
+sudo apt-get install doxygen
+```
+Now from the cloned directory run:
+```
+doxygen doxygen
+```
+
+Generated doxygen files are in html format and you can find them in ./docs folder. With the following command
+```
+cd docs
+cd html
+google-chrome index.html
+```
+## Running Cppcheck and Cpplint
+Run cppcheck: Results are stored in `./results/cppcheck.txt` 
+```
+sh run_cppcheck.sh
+```
+
+Run cpplint: Results are stored in `./results/cpplinttxt`
+```
+sh run_cpplint.sh
+```
+
