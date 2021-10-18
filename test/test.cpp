@@ -44,15 +44,15 @@
 
 
 acme::AutoBot robot_object(0, 0);
-acme::HumanTracker tracker_object(0.4);
-std::vector<std::string> classes = {};
-acme::Detector detect_object(0.4, classes);
+acme::HumanTracker tracker_object(0.1);
+std::vector<std::string> classes = {"person"};
+acme::Detector detect_object(0.2, classes);
 acme::Utils utils_object;
 
 TEST(AutoBot, Run) {
     acme::Mode mode = acme::Mode::kRealTime;
     robot_object.SetTestCounter(1);
-    robot_object.SetShowWindow(false);
+    robot_object.SetShowWindow(true);
     ASSERT_NO_THROW(robot_object.Run(mode));
 
     mode = acme::Mode::kTesting;
@@ -89,14 +89,28 @@ TEST(AutoBot, SetHumanHeight) {
 }
 
 TEST(HumanTracker, TrackHumans) {
-    cv::Mat img;
+    cv::Mat img = cv::imread("..//data//test.png");
     auto output = tracker_object.TrackHumans(img);
-    ASSERT_EQ(static_cast<int>(output.size()), 0);
+    std::cout<<"track humans "<<output.size()<<std::endl;
+    ASSERT_EQ(static_cast<int>(output.size()), 1);
+}
+TEST(Detection, structure) {
+    std::string class_name = "person";
+    acme::Detection temp_object(cv::Rect(1,1,1,1), 0.4, class_name);
+
+    ASSERT_EQ(static_cast<int>(temp_object.bbox.x), 1);
+    ASSERT_EQ(static_cast<int>(temp_object.bbox.y), 1);
+    ASSERT_EQ(static_cast<int>(temp_object.bbox.width), 1);
+    ASSERT_EQ(static_cast<int>(temp_object.bbox.height), 1);
+    ASSERT_EQ(temp_object.confidence, 0.4);
+    ASSERT_EQ(temp_object.name, class_name);
+        
 }
 TEST(Detector, Detect) {
-    cv::Mat img;
+    cv::Mat img = cv::imread("..//data//test.png");
     auto output = detect_object.Detect(img);
-    ASSERT_EQ(static_cast<int>(output.size()), 0);
+    std::cout<<"detector "<<output.size()<<std::endl;
+    ASSERT_EQ(static_cast<int>(output.size()), 1);
 }
 TEST(Detector, SetClassesToDetect) {
     ASSERT_NO_THROW(detect_object.SetClasses());
@@ -148,11 +162,11 @@ TEST(Utils, FitWithinSize) {
     ASSERT_EQ(output2.height, -1);
 }
 TEST(Utils, DrawBbox) {
-    cv::Mat img = cv::Mat::zeros(cv::Size(10, 10), CV_8UC3);
-    std::vector<cv::Rect> boxes = {};
+    cv::Mat img = cv::Mat::zeros(cv::Size(100, 100), CV_8UC3);
+    std::vector<cv::Rect> boxes = {cv::Rect(2,2,2,2)};
     auto output  = utils_object.DrawBbox(img, boxes);
-    ASSERT_EQ(static_cast<int>(output.cols), 10);
-    ASSERT_EQ(static_cast<int>(output.rows), 10);
+    ASSERT_EQ(static_cast<int>(output.cols), 100);
+    ASSERT_EQ(static_cast<int>(output.rows), 100);
 }
 TEST(Utils, GetBboxCenter) {
     cv::Rect r = cv::Rect();

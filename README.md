@@ -1,7 +1,7 @@
 # Acme-Robotics-Human-Detector-Tracker
 
-[![Build Status](https://app.travis-ci.com/mjoshi07/Acme-Robotics-Human-Tracker.svg?branch=main)](https://app.travis-ci.com/mjoshi07/Acme-Robotics-Human-Tracker)
-[![Coverage Status](https://coveralls.io/repos/github/mjoshi07/Acme-Robotics-Human-Tracker/badge.svg?branch=main)](https://coveralls.io/github/mjoshi07/Acme-Robotics-Human-Tracker?branch=main)
+[![Build Status](https://app.travis-ci.com/naitri/Acme-Robotics-Human-Tracker.svg?branch=dev_phase1)](https://app.travis-ci.com/naitri/Acme-Robotics-Human-Tracker)
+[![Coverage Status](https://coveralls.io/repos/github/naitri/Acme-Robotics-Human-Tracker/badge.svg?branch=dev_phase1)](https://coveralls.io/github/naitri/Acme-Robotics-Human-Tracker?branch=dev_phase1)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 Detects and Tracks Human in Robot Reference Frame
