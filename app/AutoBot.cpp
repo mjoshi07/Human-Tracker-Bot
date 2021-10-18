@@ -196,9 +196,28 @@ void acme::AutoBot::InitParams(int camera_id, double calib_factor) {
     /// set human height, in meters default value
     avg_human_height_ = 1.7;
 
+    /// set processing size default value
+    p_size_ = cv::Size(640, 480);
+
+    /// set confidence threshold for human_tracker default value
+    double conf_threshold = 0.6;
+
+    /// initialize HumanTracker Object
+    human_tracker_ = std::make_unique<acme::HumanTracker>(conf_threshold);
+
+    /// set show window default value
+    show_window_ = true;
+
+    /// set test counter default value
+    test_counter_ = -1;
 
     /// open camera stream using the video capture object
-    cap_.open(camera_id_);
+    /// Uncomment the line below if using webcam
+    /// auto path = camera_id_;
+
+    /// Path for testing on a video; comment this line if using webcam
+    auto path = "..//data//test.mov";
+    cap_.open(path);
 
     /// check if camera is open
     if ( cap_.isOpened() ) {
@@ -222,21 +241,6 @@ void acme::AutoBot::InitParams(int camera_id, double calib_factor) {
             std::cout << "Cannot open camera" << std::endl;
             return;
     }
-
-    /// set processing size default value
-    p_size_ = cv::Size(640, 480);
-
-    /// set confidence threshold for human_tracker default value
-    double conf_threshold = 0.6;
-
-    /// initialize HumanTracker Object
-    human_tracker_ = std::make_unique<acme::HumanTracker>(conf_threshold);
-
-    /// set show window default value
-    show_window_ = true;
-
-    /// set test counter default value
-    test_counter_ = -1;
 }
 
 void acme::AutoBot::ToRobotFrame(const std::vector<cv::Rect> &tracks) {

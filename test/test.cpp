@@ -43,7 +43,7 @@
 #include <Utils.hpp>
 
 
-acme::AutoBot robot_object(0, 0);
+acme::AutoBot robot_object(0, -1);
 acme::HumanTracker tracker_object(0.1);
 std::vector<std::string> classes = {"person"};
 acme::Detector detect_object(0.2, classes);
@@ -52,7 +52,7 @@ acme::Utils utils_object;
 TEST(AutoBot, Run) {
     acme::Mode mode = acme::Mode::kRealTime;
     robot_object.SetTestCounter(1);
-    robot_object.SetShowWindow(true);
+    robot_object.SetShowWindow(false);
     ASSERT_NO_THROW(robot_object.Run(mode));
 
     mode = acme::Mode::kTesting;
@@ -91,12 +91,11 @@ TEST(AutoBot, SetHumanHeight) {
 TEST(HumanTracker, TrackHumans) {
     cv::Mat img = cv::imread("..//data//test.png");
     auto output = tracker_object.TrackHumans(img);
-    std::cout<<"track humans "<<output.size()<<std::endl;
     ASSERT_EQ(static_cast<int>(output.size()), 1);
 }
 TEST(Detection, structure) {
     std::string class_name = "person";
-    acme::Detection temp_object(cv::Rect(1,1,1,1), 0.4, class_name);
+    acme::Detection temp_object(cv::Rect(1, 1, 1, 1), 0.4, class_name);
 
     ASSERT_EQ(static_cast<int>(temp_object.bbox.x), 1);
     ASSERT_EQ(static_cast<int>(temp_object.bbox.y), 1);
@@ -104,12 +103,10 @@ TEST(Detection, structure) {
     ASSERT_EQ(static_cast<int>(temp_object.bbox.height), 1);
     ASSERT_EQ(temp_object.confidence, 0.4);
     ASSERT_EQ(temp_object.name, class_name);
-        
 }
 TEST(Detector, Detect) {
     cv::Mat img = cv::imread("..//data//test.png");
     auto output = detect_object.Detect(img);
-    std::cout<<"detector "<<output.size()<<std::endl;
     ASSERT_EQ(static_cast<int>(output.size()), 1);
 }
 TEST(Detector, SetClassesToDetect) {
@@ -163,7 +160,7 @@ TEST(Utils, FitWithinSize) {
 }
 TEST(Utils, DrawBbox) {
     cv::Mat img = cv::Mat::zeros(cv::Size(100, 100), CV_8UC3);
-    std::vector<cv::Rect> boxes = {cv::Rect(2,2,2,2)};
+    std::vector<cv::Rect> boxes = {cv::Rect(2, 2, 2, 2)};
     auto output  = utils_object.DrawBbox(img, boxes);
     ASSERT_EQ(static_cast<int>(output.cols), 100);
     ASSERT_EQ(static_cast<int>(output.rows), 100);
