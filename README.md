@@ -47,6 +47,40 @@ Image taken from this [article](https://medium.com/@luanaebio/detecting-people-w
 
 * Quadchart, Product backlog, Proposal of 2 pages can be found ![here](https://github.com/mjoshi07/Acme-Robotics-Human-Tracker/tree/main/Proposal_documentation)
 
+## Dependencies
+
+Install OpenCV 4.5.0 and other dependencies using the following command found in Acme-Robotics-Human-Tracker directory
+
+```
+sh requirements.sh
+```
+
+## Build Instructions 
+ With the following steps you can clone this repository in you local machine and build it.
+ '''
+ git clone --recursive https://github.com/mjoshi07/Acme-Robotics-Human-Tracker
+ cd Acme-Robotics-Human-Tracker
+ mkdir build
+ cd build
+ cmake ..
+ make
+ '''
+ To run tests of this module, use the following command
+ 
+ '''
+ ./tests/human-tracker-test
+ '''
+ 
+ 
+ To use, webcam uncomment the line in Autobot.cpp #216 and comment line #219
+ 
+ '''
+ ./app/human-tracker
+ '''
+ 
+## Demo-Phase1
+This is the result of our implementation where we are able to detect n>1 humans and demo video can be found here
+
 
 
 ## Technology 
@@ -61,5 +95,31 @@ Image taken from this [article](https://medium.com/@luanaebio/detecting-people-w
 ## Development Process
 Following the Agile Iterative Process for Development, during the phase 1 we have fixed the roles of driver and navigator. Product backlog, iteration backlog and worklog can be found [here](https://docs.google.com/spreadsheets/d/13HgjlZA4aaiTQI1IV8A2gB09YpjLVGgOBiorfW3B0pc/edit?usp=sharing) and Sprint planning with review notes can be found [here] (https://docs.google.com/document/d/1nTnz6AaRJbC92_q_KzS1b5jW93TsNFOlQO8W9rCi3QA/edit?usp=sharing)
 
+## Generate Doxygen Documentation
 
+To install doxygen run the following command:
+```
+sudo apt-get install doxygen
+```
+Now from the cloned directory run:
+```
+doxygen doxygen
+```
+
+Generated doxygen files are in html format and you can find them in ./docs folder. With the following command
+```
+cd docs
+cd html
+google-chrome index.html
+```
+## Running Cppcheck and Cpplint
+Run cppcheck: Results are stored in `./results/cppcheck.txt` 
+```
+sh run_cppcheck.sh
+```
+
+Run cpplint: Results are stored in `./results/cpplinttxt`
+```
+sh run_cpplint.sh
+```
 
