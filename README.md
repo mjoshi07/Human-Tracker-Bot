@@ -45,7 +45,7 @@ Image taken from this [article](https://medium.com/@luanaebio/detecting-people-w
 * Activity diagram
 ![image](https://github.com/mjoshi07/Acme-Robotics-Human-Tracker/blob/dev_phase1/UML/revised/Activity_flow_diagram.png)
 
-* Quadchart, Product backlog, Proposal of 2 pages can be found ![here](https://github.com/mjoshi07/Acme-Robotics-Human-Tracker/tree/main/Proposal_documentation)
+* Quadchart and Proposal of 2 pages can be found [here](https://github.com/mjoshi07/Acme-Robotics-Human-Tracker/tree/main/Proposal_documentation)
 
 ## Dependencies
 
@@ -57,29 +57,40 @@ sh requirements.sh
 
 ## Build Instructions 
  With the following steps you can clone this repository in you local machine and build it.
- '''
+ ```
  git clone --recursive https://github.com/mjoshi07/Acme-Robotics-Human-Tracker
+ ```
+ ```
  cd Acme-Robotics-Human-Tracker
+ ```
+ ```
  mkdir build
+ ```
+ ```
  cd build
+ ```
+ ```
  cmake ..
+ ```
+ ```
  make
- '''
+ ```
  To run tests of this module, use the following command
  
- '''
+```
  ./tests/human-tracker-test
- '''
+ ```
  
  
- To use, webcam uncomment the line in Autobot.cpp #216 and comment line #219
+ To use, webcam uncomment the line in Autobot.cpp [#216](https://github.com/mjoshi07/Acme-Robotics-Human-Tracker/blob/dev_phase1/app/AutoBot.cpp#L216) and comment line [#219](https://github.com/mjoshi07/Acme-Robotics-Human-Tracker/blob/dev_phase1/app/AutoBot.cpp#L219)
  
- '''
+ ```
  ./app/human-tracker
- '''
+ ```
  
 ## Demo-Phase1
-This is the result of our implementation where we are able to detect n>1 humans and demo video can be found here
+The result of phase 1 - first version of implementation for Human(N>=1) detection and tracking can be found [here](https://drive.google.com/file/d/13ceM9Q6N2FIapMlneqsDmOhgcdXXljtR/view?usp=sharing)
+![image](https://github.com/mjoshi07/Acme-Robotics-Human-Tracker/blob/dev_phase1/output-phase1/output.png)
 
 
 
@@ -93,7 +104,7 @@ This is the result of our implementation where we are able to detect n>1 humans 
 * Pre-trained model (yoloV4-tiny)
 
 ## Development Process
-Following the Agile Iterative Process for Development, during the phase 1 we have fixed the roles of driver and navigator. Product backlog, iteration backlog and worklog can be found [here](https://docs.google.com/spreadsheets/d/13HgjlZA4aaiTQI1IV8A2gB09YpjLVGgOBiorfW3B0pc/edit?usp=sharing) and Sprint planning with review notes can be found [here] (https://docs.google.com/document/d/1nTnz6AaRJbC92_q_KzS1b5jW93TsNFOlQO8W9rCi3QA/edit?usp=sharing)
+Following the Agile Iterative Process for Development, during the phase 1 we have fixed the roles of driver and navigator. Product backlog, iteration backlog and worklog can be found [here](https://docs.google.com/spreadsheets/d/13HgjlZA4aaiTQI1IV8A2gB09YpjLVGgOBiorfW3B0pc/edit?usp=sharing) and Sprint planning with review notes can be found [here](https://docs.google.com/document/d/1nTnz6AaRJbC92_q_KzS1b5jW93TsNFOlQO8W9rCi3QA/edit?usp=sharing)
 
 ## Generate Doxygen Documentation
 
@@ -103,7 +114,10 @@ sudo apt-get install doxygen
 ```
 Now from the cloned directory run:
 ```
-doxygen doxygen
+cd docs
+```
+```
+doxygen Doxyfile
 ```
 
 Generated doxygen files are in html format and you can find them in ./docs folder. With the following command
