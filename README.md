@@ -30,7 +30,6 @@ Image taken from this [article](https://medium.com/@luanaebio/detecting-people-w
 * UML and activity diagrams
 * Travis code coverage setup with Coveralls
 * Developer-level documentation
-* Phase 1 - implementation of first version of the whole module
 
 ## Potential Risks and Mitigation
 * The model is trained on [MS COCO dataset](https://cocodataset.org/#home) which contains RGB images therefore would not able to work with infrared cameras or in low light. Training on additional low light and data from infrared camera can make the model more robust
@@ -40,14 +39,17 @@ Image taken from this [article](https://medium.com/@luanaebio/detecting-people-w
 ## UML Diagram
 * The class dependency diagram of the proposed design:
 
-![image](https://github.com/mjoshi07/Acme-Robotics-Human-Tracker/blob/main/UML/revised/UML_class_diagram.png)
+![image](https://github.com/mjoshi07/Acme-Robotics-Human-Tracker/blob/dev_phase2/UML/revised/UML_class_diagram.png)
 
 * Activity diagram
-![image](https://github.com/mjoshi07/Acme-Robotics-Human-Tracker/blob/main/UML/revised/Activity_flow_diagram.png)
+![image](https://github.com/mjoshi07/Acme-Robotics-Human-Tracker/blob/dev_phase2/UML/revised/Actiivity_flow_diagram.png)
 
 * Quadchart and Proposal of 2 pages can be found [here](https://github.com/mjoshi07/Acme-Robotics-Human-Tracker/tree/main/Proposal_documentation)
 
-## Dependencies
+## Dependencies with licenses
+* OpenCV 4.5.0 (covered under the open-source Apache 2 License)
+* Eigen 3.4 the Mozilla Public License 2.0
+* GTest BSD 3-Clause "New" or "Revised" License
 
 Install OpenCV 4.5.0 and other dependencies using the following command found in Acme-Robotics-Human-Tracker directory
 
@@ -88,11 +90,21 @@ sh requirements.sh
  ./app/human-tracker
  ```
  
-## Demo-Phase1
-The result of phase 1 - first version of implementation for Human(N>=1) detection and tracking can be found [here](https://drive.google.com/file/d/13ceM9Q6N2FIapMlneqsDmOhgcdXXljtR/view?usp=sharing)
-![image](https://github.com/mjoshi07/Acme-Robotics-Human-Tracker/blob/main/output-phase1/output.png)
-
-
+## Results
+* Detection output of running the detector on some random images with known ground truth
+* Green Bounding Box represents the GROUND TRUTH and Red Bounding Box represents the DETECTOR Output
+![image](https://github.com/mjoshi07/Acme-Robotics-Human-Tracker/blob/dev_phase2/output_phase2/final-test.png)
+* The results on live webcame 
+![image](https://github.com/mjoshi07/Acme-Robotics-Human-Tracker/blob/dev_phase2/output_phase2/out.gif)
+* Human location in ROBOT REFERENCE FRAME
+* ![image](https://github.com/mjoshi07/Acme-Robotics-Human-Tracker/blob/dev_phase2/output_phase2/output.png)
+## Metrics
+* We used Intersection over Union as a metric for our detector as it is a better metric than measuring error between centroids
+![image](https://www.pyimagesearch.com/wp-content/uploads/2016/09/iou_equation.png)
+![image](https://www.pyimagesearch.com/wp-content/uploads/2016/09/iou_examples.png)
+* IOU takes into consideration the height and width of the predicted bounding box whereas centroid shift only takes into consideration the location of centroid of the bounding box which is an ambigous metric as displayed below
+![image](https://github.com/mjoshi07/Acme-Robotics-Human-Tracker/blob/dev_phase2/output_phase2/wront-metric.png)
+* Centroid of the predicted bounding box highlighted in Red color is same for both images and also coincides with the centroid of the Ground Truth bounding box highlighted in Green Color but it is quite obvious that both the predicted bounding boxes are quite inaccurate
 
 ## Technology 
 * We will be following [AIP](https://en.wikipedia.org/wiki/Agile_software_development) (Agile Iterative Process) and implement the software using [TDD](https://en.wikipedia.org/wiki/Test-driven_development) (Test Driven Development)
