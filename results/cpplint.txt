@@ -1,4 +1,3 @@
-cpplint $( find . -name \*.hpp -or -name \*.cpp | grep -vE -e "^./build/" -e "^./vendor/" -e "^./docs/" -e "^./results" )
 Done processing ./app/AutoBot.cpp
 Done processing ./app/Detector.cpp
 Done processing ./app/HumanTracker.cpp
@@ -10,4 +9,3 @@ Done processing ./include/HumanTracker.hpp
 Done processing ./include/Utils.hpp
 Done processing ./test/main.cpp
 Done processing ./test/test.cpp
-
