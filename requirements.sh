@@ -10,6 +10,14 @@ sudo apt-get install libvorbis-dev libxvidcore-dev
 sudo apt-get install libopencore-amrnb-dev libopencore-amrwb-dev
 sudo apt-get install x264 v4l-utils
 
+### Download the test video file
+cd data
+wget --no-check-certificate 'https://docs.google.com/uc?export=download&id=1ewMg0YxcMLCDdaD3gSGZ5uDlV5l1TMQg' -O test.mov
+
+### Download the model weights file
+wget https://github.com/AlexeyAB/darknet/releases/download/darknet_yolo_v4_pre/yolov4-tiny.weights
+cd ..
+
 ### For opencv
 git clone https://github.com/opencv/opencv.git
 cd opencv 

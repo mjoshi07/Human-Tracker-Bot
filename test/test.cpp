@@ -81,7 +81,7 @@ TEST(AutoBot, SetProcessingSize) {
     ASSERT_NO_THROW(robot_object.SetProcessingSize(s));
 }
 TEST(AutoBot, GetObjects) {
-    ASSERT_EQ(0, static_cast<int>(robot_object.GetObjects().size()));
+    ASSERT_NEAR(10, static_cast<int>(robot_object.GetObjects().size()), 20);
 }
 TEST(AutoBot, SetHumanHeight) {
     double height = 1.6;
@@ -144,37 +144,25 @@ TEST(Detector, SetMeanToSubtract) {
     cv::Scalar mean = cv::Scalar();
     ASSERT_NO_THROW(detect_object.SetMeanToSubtract(mean));
 }
-TEST(Utils, FitWithinSize) {
-    cv::Point p = cv::Point();
-    cv::Size s = cv::Size();
-    auto output = utils_object.FitWithinSize(p, s);
-    ASSERT_EQ(output.x, -1);
-    ASSERT_EQ(output.y, -1);
 
-    cv::Rect r = cv::Rect();
-    auto output2 = utils_object.FitWithinSize(r, s);
-    ASSERT_EQ(output2.x, -1);
-    ASSERT_EQ(output2.y, -1);
-    ASSERT_EQ(output2.width, -1);
-    ASSERT_EQ(output2.height, -1);
-}
 TEST(Utils, DrawBbox) {
     cv::Mat img = cv::Mat::zeros(cv::Size(100, 100), CV_8UC3);
-    std::vector<cv::Rect> boxes = {cv::Rect(2, 2, 2, 2)};
-    auto output  = utils_object.DrawBbox(img, boxes);
+    cv::Rect box(2, 2, 2, 2);
+    std::string label = "";
+    auto output  = utils_object.DrawBbox(img, box, label);
     ASSERT_EQ(static_cast<int>(output.cols), 100);
     ASSERT_EQ(static_cast<int>(output.rows), 100);
 }
 TEST(Utils, GetBboxCenter) {
-    cv::Rect r = cv::Rect();
+    cv::Rect r = cv::Rect(0, 0, 10, 10);
     auto output = utils_object.GetBboxCenter(r);
-    ASSERT_EQ(output.x, -1);
-    ASSERT_EQ(output.y, -1);
+    ASSERT_EQ(output.x, 5);
+    ASSERT_EQ(output.y, 5);
 }
 TEST(Utils, GetBboxArea) {
-    cv::Rect r = cv::Rect();
+    cv::Rect r = cv::Rect(0, 0, 10, 10);
     auto output = utils_object.GetBboxArea(r);
-    ASSERT_EQ(output, -1.0);
+    ASSERT_EQ(output, 100.0);
 }
 TEST(Utils, ResizeImage) {
     cv::Mat img = cv::Mat::zeros(cv::Size(10, 10), CV_8UC3);
@@ -184,24 +172,16 @@ TEST(Utils, ResizeImage) {
     ASSERT_EQ(static_cast<int>(output.rows), 20);
 }
 TEST(Utils, CalculateIOU) {
-    cv::Rect r1 = cv::Rect();
-    cv::Rect r2 = cv::Rect();
+    cv::Rect r1 = cv::Rect(0, 0, 10, 10);
+    cv::Rect r2 = cv::Rect(5, 5, 10, 10);
     auto output = utils_object.CalculateIOU(r1, r2);
-    ASSERT_EQ(output, -1);
+    ASSERT_NEAR(output, 0.166, 1);
 }
-TEST(Utils, CalcuPixelsToPoselateIOU) {
-    cv::Rect r = cv::Rect();
+TEST(Utils, PixelsToPose) {
+    cv::Rect r = cv::Rect(0, 0, 10, 10);
     double calib_factor = 0.2;
     auto output = utils_object.PixelsToPose(r, calib_factor);
-    ASSERT_EQ(output.x, -1);
-    ASSERT_EQ(output.y, -1);
-    ASSERT_EQ(output.z, -1);
-}
-TEST(Utils, GetTransformedPose) {
-    acme::Pose p1 = acme::Pose();
-    acme::Pose p2 = acme::Pose();
-    auto output = utils_object.GetTransformedPose(p1, p2);
-    ASSERT_EQ(output.x, -1);
-    ASSERT_EQ(output.y, -1);
-    ASSERT_EQ(output.z, -1);
+    ASSERT_NEAR(output.x, 0.02, 0.1);
+    ASSERT_NEAR(output.y, 5.0, 0.1);
+    ASSERT_NEAR(output.z, 5.0, 0.1);
 }
