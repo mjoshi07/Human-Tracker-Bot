@@ -59,9 +59,6 @@ void acme::HumanTracker::InitParams(double confidence) {
 
     /// clear the vector which will store the detections
     humans_.clear();
-
-    /// create an opencv tracker
-    tracker_ = cv::TrackerKCF::create();
 }
 
 std::vector<cv::Rect> acme::HumanTracker::TrackHumans(const cv::Mat &frame) {

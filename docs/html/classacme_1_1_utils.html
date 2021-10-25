@@ -26,9 +26,9 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Acme-Robotics-Human-Tracker
-   &#160;<span id="projectnumber">0.1</span>
+   &#160;<span id="projectnumber">0.2</span>
    </div>
-   <div id="projectbrief">Detect and tracks human</div>
+   <div id="projectbrief">Detects and tracks humans in robot reference frame</div>
   </td>
  </tr>
  </tbody>
@@ -98,15 +98,9 @@ $(document).ready(function(){initNavTree('classacme_1_1_utils.html',''); initRes
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a95e1ecb3b153a5c06dcb090970c7fbff"><td class="memItemLeft" align="right" valign="top">static cv::Point&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classacme_1_1_utils.html#a95e1ecb3b153a5c06dcb090970c7fbff">FitWithinSize</a> (const cv::Point &amp;p, const cv::Size &amp;s)</td></tr>
-<tr class="memdesc:a95e1ecb3b153a5c06dcb090970c7fbff"><td class="mdescLeft">&#160;</td><td class="mdescRight">changes the point location to be inside the specified size  <a href="classacme_1_1_utils.html#a95e1ecb3b153a5c06dcb090970c7fbff">More...</a><br /></td></tr>
-<tr class="separator:a95e1ecb3b153a5c06dcb090970c7fbff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a68f7ca4ac5ca27269c34b18c0d066773"><td class="memItemLeft" align="right" valign="top">static cv::Rect&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classacme_1_1_utils.html#a68f7ca4ac5ca27269c34b18c0d066773">FitWithinSize</a> (const cv::Rect &amp;b, const cv::Size &amp;s)</td></tr>
-<tr class="memdesc:a68f7ca4ac5ca27269c34b18c0d066773"><td class="mdescLeft">&#160;</td><td class="mdescRight">changes the bbox location to be inside the specified size  <a href="classacme_1_1_utils.html#a68f7ca4ac5ca27269c34b18c0d066773">More...</a><br /></td></tr>
-<tr class="separator:a68f7ca4ac5ca27269c34b18c0d066773"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a30416e626a331f33231bd104e4b8c633"><td class="memItemLeft" align="right" valign="top">static cv::Mat&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classacme_1_1_utils.html#a30416e626a331f33231bd104e4b8c633">DrawBbox</a> (cv::Mat i, const std::vector&lt; cv::Rect &gt; &amp;bs)</td></tr>
-<tr class="memdesc:a30416e626a331f33231bd104e4b8c633"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws bbox on the frame.  <a href="classacme_1_1_utils.html#a30416e626a331f33231bd104e4b8c633">More...</a><br /></td></tr>
-<tr class="separator:a30416e626a331f33231bd104e4b8c633"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af0f2fad666483c9be9f29be628b33f50"><td class="memItemLeft" align="right" valign="top">static cv::Mat&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classacme_1_1_utils.html#af0f2fad666483c9be9f29be628b33f50">DrawBbox</a> (cv::Mat i, const cv::Rect &amp;b, const std::string &amp;l)</td></tr>
+<tr class="memdesc:af0f2fad666483c9be9f29be628b33f50"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws bbox on the frame.  <a href="classacme_1_1_utils.html#af0f2fad666483c9be9f29be628b33f50">More...</a><br /></td></tr>
+<tr class="separator:af0f2fad666483c9be9f29be628b33f50"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a96051bfc008f2baaf4ad21606959f9d0"><td class="memItemLeft" align="right" valign="top">static cv::Point&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classacme_1_1_utils.html#a96051bfc008f2baaf4ad21606959f9d0">GetBboxCenter</a> (const cv::Rect &amp;bbox)</td></tr>
 <tr class="memdesc:a96051bfc008f2baaf4ad21606959f9d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the Bbox Center.  <a href="classacme_1_1_utils.html#a96051bfc008f2baaf4ad21606959f9d0">More...</a><br /></td></tr>
 <tr class="separator:a96051bfc008f2baaf4ad21606959f9d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -122,9 +116,6 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a9b12764cb680f1672ad7045c41d397f0"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structacme_1_1_pose.html">Pose</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classacme_1_1_utils.html#a9b12764cb680f1672ad7045c41d397f0">PixelsToPose</a> (const cv::Rect &amp;b, double calib_factor)</td></tr>
 <tr class="memdesc:a9b12764cb680f1672ad7045c41d397f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts bbox pixels in (x, y, z) in another frame of ref.  <a href="classacme_1_1_utils.html#a9b12764cb680f1672ad7045c41d397f0">More...</a><br /></td></tr>
 <tr class="separator:a9b12764cb680f1672ad7045c41d397f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a54f314a17b74adb7fd945cece6dc3e5f"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structacme_1_1_pose.html">Pose</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classacme_1_1_utils.html#a54f314a17b74adb7fd945cece6dc3e5f">GetTransformedPose</a> (const <a class="el" href="structacme_1_1_pose.html">Pose</a> &amp;src, const <a class="el" href="structacme_1_1_pose.html">Pose</a> &amp;dst)</td></tr>
-<tr class="memdesc:a54f314a17b74adb7fd945cece6dc3e5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the Transformed <a class="el" href="structacme_1_1_pose.html" title="Structure to store the pose of an object in (x, y, z)">Pose</a> from src pose to dst pose.  <a href="classacme_1_1_utils.html#a54f314a17b74adb7fd945cece6dc3e5f">More...</a><br /></td></tr>
-<tr class="separator:a54f314a17b74adb7fd945cece6dc3e5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="classacme_1_1_utils.html" title="Utils class for generic function.">Utils</a> class for generic function. </p>
@@ -172,11 +163,18 @@ Static Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>double iou </dd></dl>
+<p>get min and max values of 1st bounding box</p>
+<p>get min and max values of 2nd bounding box</p>
+<p>calculate intersecting x and y point</p>
+<p>calculate area of bboxes</p>
+<p>calculate intersection</p>
+<p>calculate union</p>
+<p>calculate Intersection over Union</p>
 
 </div>
 </div>
-<a id="a30416e626a331f33231bd104e4b8c633"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a30416e626a331f33231bd104e4b8c633">&#9670;&nbsp;</a></span>DrawBbox()</h2>
+<a id="af0f2fad666483c9be9f29be628b33f50"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af0f2fad666483c9be9f29be628b33f50">&#9670;&nbsp;</a></span>DrawBbox()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -193,8 +191,14 @@ Static Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const std::vector&lt; cv::Rect &gt; &amp;&#160;</td>
-          <td class="paramname"><em>bs</em>&#160;</td>
+          <td class="paramtype">const cv::Rect &amp;&#160;</td>
+          <td class="paramname"><em>b</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>l</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -221,7 +225,6 @@ Static Public Member Functions</h2></td></tr>
 <p>creating a copy of frame</p>
 <p>set color for Bbox</p>
 <p>set color for label x</p>
-<p>initialize ID for each box</p>
 <p>initialize font type</p>
 <p>initialize font scale</p>
 <p>variable to store label point</p>
@@ -230,106 +233,12 @@ Static Public Member Functions</h2></td></tr>
 <p>initialize baseline</p>
 <p>variable for label size</p>
 <p>draws rectangle on frame</p>
-<p>increment ID for next Bbox</p>
-<p>converting ID type to string for displaying</p>
 <p>get label size</p>
 <p>get top point for label rectangle</p>
 <p>get bottom point for label rectangle</p>
 <p>get point for label</p>
 <p>draw rectangle for label</p>
 <p>display text of label</p>
-
-</div>
-</div>
-<a id="a95e1ecb3b153a5c06dcb090970c7fbff"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a95e1ecb3b153a5c06dcb090970c7fbff">&#9670;&nbsp;</a></span>FitWithinSize() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">cv::Point acme::Utils::FitWithinSize </td>
-          <td>(</td>
-          <td class="paramtype">const cv::Point &amp;&#160;</td>
-          <td class="paramname"><em>p</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const cv::Size &amp;&#160;</td>
-          <td class="paramname"><em>s</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>changes the point location to be inside the specified size </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">point</td><td></td></tr>
-    <tr><td class="paramname">size</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>cv::Point </dd></dl>
-
-</div>
-</div>
-<a id="a68f7ca4ac5ca27269c34b18c0d066773"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a68f7ca4ac5ca27269c34b18c0d066773">&#9670;&nbsp;</a></span>FitWithinSize() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">cv::Rect acme::Utils::FitWithinSize </td>
-          <td>(</td>
-          <td class="paramtype">const cv::Rect &amp;&#160;</td>
-          <td class="paramname"><em>b</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const cv::Size &amp;&#160;</td>
-          <td class="paramname"><em>s</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>changes the bbox location to be inside the specified size </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">bbox</td><td></td></tr>
-    <tr><td class="paramname">size</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>cv::Rect </dd></dl>
 
 </div>
 </div>
@@ -403,52 +312,6 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a54f314a17b74adb7fd945cece6dc3e5f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a54f314a17b74adb7fd945cece6dc3e5f">&#9670;&nbsp;</a></span>GetTransformedPose()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structacme_1_1_pose.html">acme::Pose</a> acme::Utils::GetTransformedPose </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="structacme_1_1_pose.html">Pose</a> &amp;&#160;</td>
-          <td class="paramname"><em>src</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="structacme_1_1_pose.html">Pose</a> &amp;&#160;</td>
-          <td class="paramname"><em>dst</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Get the Transformed <a class="el" href="structacme_1_1_pose.html" title="Structure to store the pose of an object in (x, y, z)">Pose</a> from src pose to dst pose. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">src</td><td><a class="el" href="structacme_1_1_pose.html" title="Structure to store the pose of an object in (x, y, z)">Pose</a> </td></tr>
-    <tr><td class="paramname">dst</td><td><a class="el" href="structacme_1_1_pose.html" title="Structure to store the pose of an object in (x, y, z)">Pose</a> </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>transformed <a class="el" href="structacme_1_1_pose.html" title="Structure to store the pose of an object in (x, y, z)">Pose</a> </dd></dl>
-
-</div>
-</div>
 <a id="a9b12764cb680f1672ad7045c41d397f0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9b12764cb680f1672ad7045c41d397f0">&#9670;&nbsp;</a></span>PixelsToPose()</h2>
 
@@ -492,6 +355,9 @@ Static Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="structacme_1_1_pose.html" title="Structure to store the pose of an object in (x, y, z)">Pose</a> </dd></dl>
+<p>height of object in pixels</p>
+<p>calibrated distance using focal length and calib factor</p>
+<p>get centre of bbox</p>
 
 </div>
 </div>

@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['trackhumans_98',['TrackHumans',['../classacme_1_1_human_tracker.html#aacbb8dcc7a95213a46ffb33f4813b585',1,'acme::HumanTracker']]]
+  ['_7eautobot_95',['~AutoBot',['../classacme_1_1_auto_bot.html#a481cd16503327cf358557c02ce201a44',1,'acme::AutoBot']]],
+  ['_7edetector_96',['~Detector',['../classacme_1_1_detector.html#a7da3d5523e6dd3d2e25bd051763e9ae1',1,'acme::Detector']]],
+  ['_7ehumantracker_97',['~HumanTracker',['../classacme_1_1_human_tracker.html#abd10633084a4c08c72d3337dd27374d0',1,'acme::HumanTracker']]]
 ];

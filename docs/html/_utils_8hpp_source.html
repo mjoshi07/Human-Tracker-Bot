@@ -26,9 +26,9 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Acme-Robotics-Human-Tracker
-   &#160;<span id="projectnumber">0.1</span>
+   &#160;<span id="projectnumber">0.2</span>
    </div>
-   <div id="projectbrief">Detect and tracks human</div>
+   <div id="projectbrief">Detects and tracks humans in robot reference frame</div>
   </td>
  </tr>
  </tbody>
@@ -115,65 +115,59 @@ $(document).ready(function(){initNavTree('_utils_8hpp_source.html',''); initResi
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#define INCLUDE_UTILS_HPP_</span></div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#include &lt;opencv2/opencv.hpp&gt;</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#include &lt;opencv2/core.hpp&gt;</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keyword">namespace </span>acme {</div>
-<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="structacme_1_1_pose.html">   49</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structacme_1_1_pose.html">Pose</a>{</div>
-<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="structacme_1_1_pose.html#ace8013ddf09c752a44e2358e6b604bd2">   54</a></span>&#160;        <a class="code" href="structacme_1_1_pose.html#ace8013ddf09c752a44e2358e6b604bd2">Pose</a>() {</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                x = -1.0;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                y = -1.0;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                z = -1.0;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        }</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
-<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="structacme_1_1_pose.html#ac64b0fdc463ebe377bb5668296f3dbac">   67</a></span>&#160;        <a class="code" href="structacme_1_1_pose.html#ac64b0fdc463ebe377bb5668296f3dbac">Pose</a>(<span class="keywordtype">double</span> x1, <span class="keywordtype">double</span> y1, <span class="keywordtype">double</span> z1) {</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                x = x1;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                y = y1;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                z = z1;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        }</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keywordtype">double</span> x;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="keywordtype">double</span> y;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keywordtype">double</span> z;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;};</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
-<div class="line"><a name="l00081"></a><span class="lineno"><a class="line" href="classacme_1_1_utils.html">   81</a></span>&#160;<span class="keyword">class </span><a class="code" href="classacme_1_1_utils.html">Utils</a>{</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keyword">static</span> cv::Point <a class="code" href="classacme_1_1_utils.html#a95e1ecb3b153a5c06dcb090970c7fbff">FitWithinSize</a>(<span class="keyword">const</span> cv::Point &amp;p, <span class="keyword">const</span> cv::Size &amp;s);</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="keyword">static</span> cv::Rect <a class="code" href="classacme_1_1_utils.html#a95e1ecb3b153a5c06dcb090970c7fbff">FitWithinSize</a>(<span class="keyword">const</span> cv::Rect &amp;b, <span class="keyword">const</span> cv::Size &amp;s);</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="keyword">static</span> cv::Mat <a class="code" href="classacme_1_1_utils.html#a30416e626a331f33231bd104e4b8c633">DrawBbox</a>(cv::Mat i, <span class="keyword">const</span> std::vector&lt;cv::Rect&gt; &amp;bs);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#include &lt;opencv2/opencv.hpp&gt;</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#include &lt;opencv2/core.hpp&gt;</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keyword">namespace </span>acme {</div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="structacme_1_1_pose.html">   50</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structacme_1_1_pose.html">Pose</a>{</div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="structacme_1_1_pose.html#ace8013ddf09c752a44e2358e6b604bd2">   55</a></span>&#160;        <a class="code" href="structacme_1_1_pose.html#ace8013ddf09c752a44e2358e6b604bd2">Pose</a>() {</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                x = -1.0;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                y = -1.0;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                z = -1.0;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        }</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="structacme_1_1_pose.html#ac64b0fdc463ebe377bb5668296f3dbac">   68</a></span>&#160;        <a class="code" href="structacme_1_1_pose.html#ac64b0fdc463ebe377bb5668296f3dbac">Pose</a>(<span class="keywordtype">double</span> x1, <span class="keywordtype">double</span> y1, <span class="keywordtype">double</span> z1) {</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                x = x1;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                y = y1;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                z = z1;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        }</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="keywordtype">double</span> x;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keywordtype">double</span> y;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keywordtype">double</span> z;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;};</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="classacme_1_1_utils.html">   82</a></span>&#160;<span class="keyword">class </span><a class="code" href="classacme_1_1_utils.html">Utils</a>{</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keyword">static</span> cv::Mat <a class="code" href="classacme_1_1_utils.html#af0f2fad666483c9be9f29be628b33f50">DrawBbox</a>(cv::Mat i, <span class="keyword">const</span> cv::Rect&amp; b,</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <span class="keyword">const</span> std::string &amp;l);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="keyword">static</span> cv::Point <a class="code" href="classacme_1_1_utils.html#a96051bfc008f2baaf4ad21606959f9d0">GetBboxCenter</a>(<span class="keyword">const</span> cv::Rect &amp;bbox);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">double</span> <a class="code" href="classacme_1_1_utils.html#aef9d6b95648dfb9186b7317a8c0e0132">GetBboxArea</a>(<span class="keyword">const</span> cv::Rect &amp;bbox);</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="keyword">static</span> cv::Point <a class="code" href="classacme_1_1_utils.html#a96051bfc008f2baaf4ad21606959f9d0">GetBboxCenter</a>(<span class="keyword">const</span> cv::Rect &amp;bbox);</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">double</span> <a class="code" href="classacme_1_1_utils.html#aef9d6b95648dfb9186b7317a8c0e0132">GetBboxArea</a>(<span class="keyword">const</span> cv::Rect &amp;bbox);</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160; </div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    <span class="keyword">static</span> cv::Mat <a class="code" href="classacme_1_1_utils.html#ab3cd2d813124e230c400c1b6e54041bb">ResizeImage</a>(<span class="keyword">const</span> cv::Mat &amp;i, <span class="keyword">const</span> cv::Size &amp;s);</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">double</span> <a class="code" href="classacme_1_1_utils.html#a28585ec8e3f7942b7c7beb688aa730a4">CalculateIOU</a>(<span class="keyword">const</span> cv::Rect&amp; b1, <span class="keyword">const</span> cv::Rect&amp; b2);</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160; </div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    <span class="keyword">static</span> <a class="code" href="structacme_1_1_pose.html">Pose</a> <a class="code" href="classacme_1_1_utils.html#a9b12764cb680f1672ad7045c41d397f0">PixelsToPose</a>(<span class="keyword">const</span> cv::Rect &amp;b, <span class="keywordtype">double</span> calib_factor);</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160; </div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    <span class="keyword">static</span> <a class="code" href="structacme_1_1_pose.html">Pose</a> <a class="code" href="classacme_1_1_utils.html#a54f314a17b74adb7fd945cece6dc3e5f">GetTransformedPose</a>(<span class="keyword">const</span> <a class="code" href="structacme_1_1_pose.html">Pose</a>&amp; src, <span class="keyword">const</span> <a class="code" href="structacme_1_1_pose.html">Pose</a>&amp; dst);</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;};</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;}  <span class="comment">// namespace acme</span></div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;<span class="preprocessor">#endif  // INCLUDE_UTILS_HPP_</span></div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160; </div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <span class="keyword">static</span> cv::Mat <a class="code" href="classacme_1_1_utils.html#ab3cd2d813124e230c400c1b6e54041bb">ResizeImage</a>(<span class="keyword">const</span> cv::Mat &amp;i, <span class="keyword">const</span> cv::Size &amp;s);</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">double</span> <a class="code" href="classacme_1_1_utils.html#a28585ec8e3f7942b7c7beb688aa730a4">CalculateIOU</a>(<span class="keyword">const</span> cv::Rect&amp; b1, <span class="keyword">const</span> cv::Rect&amp; b2);</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160; </div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    <span class="keyword">static</span> <a class="code" href="structacme_1_1_pose.html">Pose</a> <a class="code" href="classacme_1_1_utils.html#a9b12764cb680f1672ad7045c41d397f0">PixelsToPose</a>(<span class="keyword">const</span> cv::Rect &amp;b, <span class="keywordtype">double</span> calib_factor);</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;};</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;}  <span class="comment">// namespace acme</span></div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;<span class="preprocessor">#endif  // INCLUDE_UTILS_HPP_</span></div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160; </div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="aclassacme_1_1_utils_html_a96051bfc008f2baaf4ad21606959f9d0"><div class="ttname"><a href="classacme_1_1_utils.html#a96051bfc008f2baaf4ad21606959f9d0">acme::Utils::GetBboxCenter</a></div><div class="ttdeci">static cv::Point GetBboxCenter(const cv::Rect &amp;bbox)</div><div class="ttdoc">Get the Bbox Center.</div><div class="ttdef"><b>Definition:</b> Utils.cpp:112</div></div>
-<div class="ttc" id="aclassacme_1_1_utils_html"><div class="ttname"><a href="classacme_1_1_utils.html">acme::Utils</a></div><div class="ttdoc">Utils class for generic function.</div><div class="ttdef"><b>Definition:</b> Utils.hpp:81</div></div>
-<div class="ttc" id="aclassacme_1_1_utils_html_ab3cd2d813124e230c400c1b6e54041bb"><div class="ttname"><a href="classacme_1_1_utils.html#ab3cd2d813124e230c400c1b6e54041bb">acme::Utils::ResizeImage</a></div><div class="ttdeci">static cv::Mat ResizeImage(const cv::Mat &amp;i, const cv::Size &amp;s)</div><div class="ttdoc">Resizes the input img to the specified size.</div><div class="ttdef"><b>Definition:</b> Utils.cpp:120</div></div>
-<div class="ttc" id="astructacme_1_1_pose_html"><div class="ttname"><a href="structacme_1_1_pose.html">acme::Pose</a></div><div class="ttdoc">Structure to store the pose of an object in (x, y, z)</div><div class="ttdef"><b>Definition:</b> Utils.hpp:49</div></div>
-<div class="ttc" id="astructacme_1_1_pose_html_ace8013ddf09c752a44e2358e6b604bd2"><div class="ttname"><a href="structacme_1_1_pose.html#ace8013ddf09c752a44e2358e6b604bd2">acme::Pose::Pose</a></div><div class="ttdeci">Pose()</div><div class="ttdoc">Construct a new Pose object with default values.</div><div class="ttdef"><b>Definition:</b> Utils.hpp:54</div></div>
-<div class="ttc" id="aclassacme_1_1_utils_html_a54f314a17b74adb7fd945cece6dc3e5f"><div class="ttname"><a href="classacme_1_1_utils.html#a54f314a17b74adb7fd945cece6dc3e5f">acme::Utils::GetTransformedPose</a></div><div class="ttdeci">static Pose GetTransformedPose(const Pose &amp;src, const Pose &amp;dst)</div><div class="ttdoc">Get the Transformed Pose from src pose to dst pose.</div><div class="ttdef"><b>Definition:</b> Utils.cpp:134</div></div>
-<div class="ttc" id="astructacme_1_1_pose_html_ac64b0fdc463ebe377bb5668296f3dbac"><div class="ttname"><a href="structacme_1_1_pose.html#ac64b0fdc463ebe377bb5668296f3dbac">acme::Pose::Pose</a></div><div class="ttdeci">Pose(double x1, double y1, double z1)</div><div class="ttdoc">Construct a new Pose object wtih user specified values.</div><div class="ttdef"><b>Definition:</b> Utils.hpp:67</div></div>
-<div class="ttc" id="aclassacme_1_1_utils_html_a9b12764cb680f1672ad7045c41d397f0"><div class="ttname"><a href="classacme_1_1_utils.html#a9b12764cb680f1672ad7045c41d397f0">acme::Utils::PixelsToPose</a></div><div class="ttdeci">static Pose PixelsToPose(const cv::Rect &amp;b, double calib_factor)</div><div class="ttdoc">Converts bbox pixels in (x, y, z) in another frame of ref.</div><div class="ttdef"><b>Definition:</b> Utils.cpp:130</div></div>
-<div class="ttc" id="aclassacme_1_1_utils_html_aef9d6b95648dfb9186b7317a8c0e0132"><div class="ttname"><a href="classacme_1_1_utils.html#aef9d6b95648dfb9186b7317a8c0e0132">acme::Utils::GetBboxArea</a></div><div class="ttdeci">static double GetBboxArea(const cv::Rect &amp;bbox)</div><div class="ttdoc">Get the Bbox Area.</div><div class="ttdef"><b>Definition:</b> Utils.cpp:116</div></div>
-<div class="ttc" id="aclassacme_1_1_utils_html_a95e1ecb3b153a5c06dcb090970c7fbff"><div class="ttname"><a href="classacme_1_1_utils.html#a95e1ecb3b153a5c06dcb090970c7fbff">acme::Utils::FitWithinSize</a></div><div class="ttdeci">static cv::Point FitWithinSize(const cv::Point &amp;p, const cv::Size &amp;s)</div><div class="ttdoc">changes the point location to be inside the specified size</div><div class="ttdef"><b>Definition:</b> Utils.cpp:39</div></div>
-<div class="ttc" id="aclassacme_1_1_utils_html_a28585ec8e3f7942b7c7beb688aa730a4"><div class="ttname"><a href="classacme_1_1_utils.html#a28585ec8e3f7942b7c7beb688aa730a4">acme::Utils::CalculateIOU</a></div><div class="ttdeci">static double CalculateIOU(const cv::Rect &amp;b1, const cv::Rect &amp;b2)</div><div class="ttdoc">Calculates intersection over union for the specified bboxes.</div><div class="ttdef"><b>Definition:</b> Utils.cpp:126</div></div>
-<div class="ttc" id="aclassacme_1_1_utils_html_a30416e626a331f33231bd104e4b8c633"><div class="ttname"><a href="classacme_1_1_utils.html#a30416e626a331f33231bd104e4b8c633">acme::Utils::DrawBbox</a></div><div class="ttdeci">static cv::Mat DrawBbox(cv::Mat i, const std::vector&lt; cv::Rect &gt; &amp;bs)</div><div class="ttdoc">Draws bbox on the frame.</div><div class="ttdef"><b>Definition:</b> Utils.cpp:47</div></div>
+<div class="ttc" id="aclassacme_1_1_utils_html_a96051bfc008f2baaf4ad21606959f9d0"><div class="ttname"><a href="classacme_1_1_utils.html#a96051bfc008f2baaf4ad21606959f9d0">acme::Utils::GetBboxCenter</a></div><div class="ttdeci">static cv::Point GetBboxCenter(const cv::Rect &amp;bbox)</div><div class="ttdoc">Get the Bbox Center.</div><div class="ttdef"><b>Definition:</b> Utils.cpp:92</div></div>
+<div class="ttc" id="aclassacme_1_1_utils_html"><div class="ttname"><a href="classacme_1_1_utils.html">acme::Utils</a></div><div class="ttdoc">Utils class for generic function.</div><div class="ttdef"><b>Definition:</b> Utils.hpp:82</div></div>
+<div class="ttc" id="aclassacme_1_1_utils_html_ab3cd2d813124e230c400c1b6e54041bb"><div class="ttname"><a href="classacme_1_1_utils.html#ab3cd2d813124e230c400c1b6e54041bb">acme::Utils::ResizeImage</a></div><div class="ttdeci">static cv::Mat ResizeImage(const cv::Mat &amp;i, const cv::Size &amp;s)</div><div class="ttdoc">Resizes the input img to the specified size.</div><div class="ttdef"><b>Definition:</b> Utils.cpp:104</div></div>
+<div class="ttc" id="aclassacme_1_1_utils_html_af0f2fad666483c9be9f29be628b33f50"><div class="ttname"><a href="classacme_1_1_utils.html#af0f2fad666483c9be9f29be628b33f50">acme::Utils::DrawBbox</a></div><div class="ttdeci">static cv::Mat DrawBbox(cv::Mat i, const cv::Rect &amp;b, const std::string &amp;l)</div><div class="ttdoc">Draws bbox on the frame.</div><div class="ttdef"><b>Definition:</b> Utils.cpp:39</div></div>
+<div class="ttc" id="astructacme_1_1_pose_html"><div class="ttname"><a href="structacme_1_1_pose.html">acme::Pose</a></div><div class="ttdoc">Structure to store the pose of an object in (x, y, z)</div><div class="ttdef"><b>Definition:</b> Utils.hpp:50</div></div>
+<div class="ttc" id="astructacme_1_1_pose_html_ace8013ddf09c752a44e2358e6b604bd2"><div class="ttname"><a href="structacme_1_1_pose.html#ace8013ddf09c752a44e2358e6b604bd2">acme::Pose::Pose</a></div><div class="ttdeci">Pose()</div><div class="ttdoc">Construct a new Pose object with default values.</div><div class="ttdef"><b>Definition:</b> Utils.hpp:55</div></div>
+<div class="ttc" id="astructacme_1_1_pose_html_ac64b0fdc463ebe377bb5668296f3dbac"><div class="ttname"><a href="structacme_1_1_pose.html#ac64b0fdc463ebe377bb5668296f3dbac">acme::Pose::Pose</a></div><div class="ttdeci">Pose(double x1, double y1, double z1)</div><div class="ttdoc">Construct a new Pose object wtih user specified values.</div><div class="ttdef"><b>Definition:</b> Utils.hpp:68</div></div>
+<div class="ttc" id="aclassacme_1_1_utils_html_a9b12764cb680f1672ad7045c41d397f0"><div class="ttname"><a href="classacme_1_1_utils.html#a9b12764cb680f1672ad7045c41d397f0">acme::Utils::PixelsToPose</a></div><div class="ttdeci">static Pose PixelsToPose(const cv::Rect &amp;b, double calib_factor)</div><div class="ttdoc">Converts bbox pixels in (x, y, z) in another frame of ref.</div><div class="ttdef"><b>Definition:</b> Utils.cpp:141</div></div>
+<div class="ttc" id="aclassacme_1_1_utils_html_aef9d6b95648dfb9186b7317a8c0e0132"><div class="ttname"><a href="classacme_1_1_utils.html#aef9d6b95648dfb9186b7317a8c0e0132">acme::Utils::GetBboxArea</a></div><div class="ttdeci">static double GetBboxArea(const cv::Rect &amp;bbox)</div><div class="ttdoc">Get the Bbox Area.</div><div class="ttdef"><b>Definition:</b> Utils.cpp:98</div></div>
+<div class="ttc" id="aclassacme_1_1_utils_html_a28585ec8e3f7942b7c7beb688aa730a4"><div class="ttname"><a href="classacme_1_1_utils.html#a28585ec8e3f7942b7c7beb688aa730a4">acme::Utils::CalculateIOU</a></div><div class="ttdeci">static double CalculateIOU(const cv::Rect &amp;b1, const cv::Rect &amp;b2)</div><div class="ttdoc">Calculates intersection over union for the specified bboxes.</div><div class="ttdef"><b>Definition:</b> Utils.cpp:110</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
