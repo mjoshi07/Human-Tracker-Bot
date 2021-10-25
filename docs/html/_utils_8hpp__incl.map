@@ -1,6 +1,7 @@
 <map id="include/Utils.hpp" name="include/Utils.hpp">
-<area shape="rect" id="node1" title="Utils class declaration for Acme Robotics &#45; Human Tracker." alt="" coords="99,5,218,32"/>
+<area shape="rect" id="node1" title="Utils class declaration for Acme Robotics &#45; Human Tracker." alt="" coords="117,5,235,32"/>
 <area shape="rect" id="node2" title=" " alt="" coords="5,80,64,107"/>
-<area shape="rect" id="node3" title=" " alt="" coords="89,80,229,107"/>
-<area shape="rect" id="node4" title=" " alt="" coords="253,80,379,107"/>
+<area shape="rect" id="node3" title=" " alt="" coords="89,80,143,107"/>
+<area shape="rect" id="node4" title=" " alt="" coords="167,80,307,107"/>
+<area shape="rect" id="node5" title=" " alt="" coords="332,80,457,107"/>
 </map>

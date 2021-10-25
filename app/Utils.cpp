@@ -24,7 +24,7 @@
 
 /**
  * @file Utils.cpp
- * @author Phase 1 - Mayank Joshi (driver) and Naitri Rajyaguru (navigator)
+ * @author Phase 2 -  Naitri Rajyaguru (driver) and Mayank Joshi (navigator)
  * @brief Utils class definition for Acme Robotics - Human Tracker
  * @version 0.1
  * 
@@ -36,15 +36,8 @@
 #include <Utils.hpp>
 
 
-cv::Point acme::Utils::FitWithinSize(const cv::Point &p, const cv::Size &s) {
-    return cv::Point(-1, -1);
-}
-
-cv::Rect acme::Utils::FitWithinSize(const cv::Rect &b, const cv::Size &s) {
-    return cv::Rect(-1, -1, -1, -1);
-}
-
-cv::Mat acme::Utils::DrawBbox(cv::Mat i, const std::vector<cv::Rect> &b) {
+cv::Mat acme::Utils::DrawBbox(cv::Mat i, const cv::Rect& b,
+    const std::string &l) {
     /// creating a copy of frame
     cv::Mat frame = i.clone();
 
@@ -53,11 +46,6 @@ cv::Mat acme::Utils::DrawBbox(cv::Mat i, const std::vector<cv::Rect> &b) {
 
     /// set color for label x
     cv::Scalar l_color = cv::Scalar::all(255);
-
-    /// initialize ID for each box
-    int id(0);
-
-    std::string label;
 
     /// initialize font type
     int f_face(0);
@@ -78,43 +66,39 @@ cv::Mat acme::Utils::DrawBbox(cv::Mat i, const std::vector<cv::Rect> &b) {
     /// variable for label size
     cv::Size l_size;
 
-    for ( cv::Rect box : b ) {
-        /// draws rectangle on frame
-        cv::rectangle(frame, box, color, 2, cv::LINE_AA);
+    /// draws rectangle on frame
+    cv::rectangle(frame, b, color, 2, cv::LINE_AA);
 
-        /// increment ID for next Bbox
-        id++;
+    /// get label size
+    l_size = cv::getTextSize(l, f_face, f_scale, 2, &b_line);
 
-        /// converting ID type to string for displaying
-        label = std::to_string(id);
+    /// get top point for label rectangle
+    top_pt = cv::Point(b.x, b.y);
 
-        /// get label size
-        l_size = cv::getTextSize(label, f_face, f_scale, 2, &b_line);
+    /// get bottom point for label rectangle
+    bottom_pt = cv::Point(b.x + l_size.width, b.y+l_size.height);
 
-        /// get top point for label rectangle
-        top_pt = cv::Point(box.x, box.y);
+    ///  get point for label
+    l_pt = cv::Point(b.x, b.y+l_size.height);
 
-        /// get bottom point for label rectangle
-        bottom_pt = cv::Point(box.x + l_size.width, box.y+l_size.height);
+    /// draw rectangle for label
+    cv::rectangle(frame, top_pt, bottom_pt, color, -1, 16);
 
-        ///  get point for label
-        l_pt = cv::Point(box.x, box.y+l_size.height);
-
-        /// draw rectangle for label
-        cv::rectangle(frame, top_pt, bottom_pt, color, -1, 16);
-
-        /// display text of label
-        cv::putText(frame, label, l_pt, f_face, f_scale, l_color, 2);
-    }
+    /// display text of label
+    cv::putText(frame, l, l_pt, f_face, f_scale, l_color, 2);
     return frame;
 }
 
 cv::Point acme::Utils::GetBboxCenter(const cv::Rect &bbox) {
-    return cv::Point(-1, -1);
+    int x_center = bbox.width / 2 + bbox.x;
+    int y_center = bbox.height / 2 + bbox.y;
+    return cv::Point(x_center, y_center);
 }
 
 double acme::Utils::GetBboxArea(const cv::Rect &bbox) {
-    return -1.0;
+    double area = 0;
+    area = bbox.width*bbox.height;
+    return area;
 }
 
 cv::Mat acme::Utils::ResizeImage(const cv::Mat &i, const cv::Size &s) {
@@ -124,13 +108,45 @@ cv::Mat acme::Utils::ResizeImage(const cv::Mat &i, const cv::Size &s) {
 }
 
 double acme::Utils::CalculateIOU(const cv::Rect& b1, const cv::Rect& b2) {
-    return -1.0;
+    /// get min and max values of 1st bounding box
+    double minx1 = b1.x;
+    double maxx1 = b1.x + b1.width;
+    double miny1 = b1.y;
+    double maxy1 = b1.y+ b1.height;
+
+    /// get min and max values of 2nd bounding box
+    double minx2 = b2.x;
+    double maxx2 = b2.x + b2.width;
+    double miny2 = b2.y;
+    double maxy2 = b2.y + b2.height;
+
+    /// calculate intersecting x and y point
+    double inter_x = std::min(maxx2, maxx1) - std::max(minx2, minx1);
+    double inter_y = std::min(maxy2, maxy1) - std::max(miny2, miny1);
+
+    /// calculate area of bboxes
+    double area1 = (maxx1 - minx1)*(maxy1 - miny1);
+    double area2 = (maxx2 - minx2)*(maxy2 - miny2);
+
+    /// calculate intersection
+    double inter = inter_x * inter_y;
+    /// calculate union
+    double uni = area1 + area2 - inter;
+    /// calculate Intersection over Union
+    if ( uni != 0 ) {
+    return inter / uni;
+    } else { return 0.0; }
 }
 
 acme::Pose acme::Utils::PixelsToPose(const cv::Rect &b, double calib_factor) {
-    return acme::Pose();
+    /// height of object in pixels
+    double height = b.height;
+    /// calibrated distance using focal length and calib factor
+    double calib_distance = calib_factor/ height;
+    /// get centre of bbox
+    cv::Point centre = acme::Utils::GetBboxCenter(b);
+
+
+    return acme::Pose(calib_distance, centre.x, centre.y);
 }
 
-acme::Pose acme::Utils::GetTransformedPose(const Pose& src, const Pose& dst) {
-    return acme::Pose();
-}

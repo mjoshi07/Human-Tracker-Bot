@@ -37,6 +37,7 @@
 #define INCLUDE_UTILS_HPP_
 
 #include <vector>
+#include <string>
 
 #include <opencv2/opencv.hpp>
 #include <opencv2/core.hpp>
@@ -81,31 +82,14 @@ struct Pose{
 class Utils{
  public:
     /**
-     * @brief changes the point location to be inside the specified size
-     * 
-     * @param point
-     * @param size
-     * @return cv::Point
-     */
-    static cv::Point FitWithinSize(const cv::Point &p, const cv::Size &s);
-
-    /**
-     * @brief changes the bbox location to be inside the specified size
-     * 
-     * @param bbox
-     * @param size
-     * @return cv::Rect
-     */
-    static cv::Rect FitWithinSize(const cv::Rect &b, const cv::Size &s);
-
-    /**
      * @brief Draws bbox on the frame
      * 
      * @param img
      * @param vector of bbox
      * @return cv::Mat
      */
-    static cv::Mat DrawBbox(cv::Mat i, const std::vector<cv::Rect> &bs);
+    static cv::Mat DrawBbox(cv::Mat i, const cv::Rect& b,
+        const std::string &l);
 
     /**
      * @brief Get the Bbox Center
@@ -149,15 +133,6 @@ class Utils{
      * @return Pose 
      */
     static Pose PixelsToPose(const cv::Rect &b, double calib_factor);
-
-    /**
-     * @brief Get the Transformed Pose from src pose to dst pose
-     * 
-     * @param src Pose
-     * @param dst Pose
-     * @return transformed Pose
-     */
-    static Pose GetTransformedPose(const Pose& src, const Pose& dst);
 };
 }  // namespace acme
 #endif  // INCLUDE_UTILS_HPP_

@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['utils_45',['Utils',['../classacme_1_1_utils.html',1,'acme']]],
-  ['utils_2ecpp_46',['Utils.cpp',['../_utils_8cpp.html',1,'']]],
-  ['utils_2ehpp_47',['Utils.hpp',['../_utils_8hpp.html',1,'']]]
+  ['_7eautobot_46',['~AutoBot',['../classacme_1_1_auto_bot.html#a481cd16503327cf358557c02ce201a44',1,'acme::AutoBot']]],
+  ['_7edetector_47',['~Detector',['../classacme_1_1_detector.html#a7da3d5523e6dd3d2e25bd051763e9ae1',1,'acme::Detector']]],
+  ['_7ehumantracker_48',['~HumanTracker',['../classacme_1_1_human_tracker.html#abd10633084a4c08c72d3337dd27374d0',1,'acme::HumanTracker']]]
 ];

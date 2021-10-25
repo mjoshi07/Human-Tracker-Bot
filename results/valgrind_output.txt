@@ -1,37 +1,37 @@
+==39050== Memcheck, a memory error detector
+==39050== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==39050== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==39050== Command: ./app/human-tracker
+==39050== 
+^C==39050== 
+==39050== Process terminating with default action of signal 2 (SIGINT)
+==39050==    at 0x4D97340: cv::dnn::opt_AVX2::fastConv(float const*, unsigned long, float const*, float const*, float*, int const*, int, int, int, float const*, bool) (in /usr/local/lib/libopencv_dnn.so.4.5.0)
+==39050==    by 0x4C4DF1B: cv::dnn::ConvolutionLayerImpl::ParallelConv::operator()(cv::Range const&) const (in /usr/local/lib/libopencv_dnn.so.4.5.0)
+==39050==    by 0x704E38A: cv::(anonymous namespace)::ParallelLoopBodyWrapper::operator()(cv::Range const&) const (in /usr/local/lib/libopencv_core.so.4.5.0)
+==39050==    by 0x705071C: cv::ParallelJob::execute(bool) (in /usr/local/lib/libopencv_core.so.4.5.0)
+==39050==    by 0x70532F0: cv::parallel_for_pthreads(cv::Range const&, cv::ParallelLoopBody const&, double) (in /usr/local/lib/libopencv_core.so.4.5.0)
+==39050==    by 0x704E6F3: cv::parallel_for_(cv::Range const&, cv::ParallelLoopBody const&, double) (in /usr/local/lib/libopencv_core.so.4.5.0)
+==39050==    by 0x4C55F71: cv::dnn::ConvolutionLayerImpl::ParallelConv::run(cv::Mat const&, cv::Mat&, cv::Mat const&, std::vector<float, std::allocator<float> > const&, std::vector<float, std::allocator<float> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&, cv::dnn::dnn4_v20200908::ActivationLayer const*, int, int) (in /usr/local/lib/libopencv_dnn.so.4.5.0)
+==39050==    by 0x4C588CD: cv::dnn::ConvolutionLayerImpl::forward(cv::_InputArray const&, cv::_OutputArray const&, cv::_OutputArray const&) (in /usr/local/lib/libopencv_dnn.so.4.5.0)
+==39050==    by 0x4C0EEF0: cv::dnn::dnn4_v20200908::Net::Impl::forwardLayer(cv::dnn::dnn4_v20200908::LayerData&) (in /usr/local/lib/libopencv_dnn.so.4.5.0)
+==39050==    by 0x4C34F99: cv::dnn::dnn4_v20200908::Net::forward(cv::_OutputArray const&, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&) (in /usr/local/lib/libopencv_dnn.so.4.5.0)
+==39050==    by 0x13C488: acme::Detector::Detect(cv::Mat const&) (Detector.cpp:64)
+==39050==    by 0x13E824: acme::Detector::WarmUp() (Detector.cpp:196)
+==39050== 
+==39050== HEAP SUMMARY:
+==39050==     in use at exit: 70,849,089 bytes in 3,834 blocks
+==39050==   total heap usage: 18,096 allocs, 14,262 frees, 83,588,803 bytes allocated
+==39050== 
+==39050== LEAK SUMMARY:
+==39050==    definitely lost: 0 bytes in 0 blocks
+==39050==    indirectly lost: 0 bytes in 0 blocks
+==39050==      possibly lost: 70,400,648 bytes in 329 blocks
+==39050==    still reachable: 448,441 bytes in 3,505 blocks
+==39050==                       of which reachable via heuristic:
+==39050==                         newarray           : 1,536 bytes in 16 blocks
+==39050==         suppressed: 0 bytes in 0 blocks
+==39050== Rerun with --leak-check=full to see details of leaked memory
+==39050== 
+==39050== For lists of detected and suppressed errors, rerun with: -s
+==39050== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
 
-==6502== Memcheck, a memory error detector
-==6502== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==6502== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
-==6502== Command: ./app/human-tracker
-==6502== 
-==6502== 
-==6502== Process terminating with default action of signal 2 (SIGINT)
-==6502==    at 0x4C41C5A: cv::dnn::ConvolutionLayerImpl::ParallelConv::operator()(cv::Range const&) const (in /usr/local/lib/libopencv_dnn.so.4.5.0)
-==6502==    by 0x6E2638A: cv::(anonymous namespace)::ParallelLoopBodyWrapper::operator()(cv::Range const&) const (in /usr/local/lib/libopencv_core.so.4.5.0)
-==6502==    by 0x6E2871C: cv::ParallelJob::execute(bool) (in /usr/local/lib/libopencv_core.so.4.5.0)
-==6502==    by 0x6E2B2F0: cv::parallel_for_pthreads(cv::Range const&, cv::ParallelLoopBody const&, double) (in /usr/local/lib/libopencv_core.so.4.5.0)
-==6502==    by 0x6E266F3: cv::parallel_for_(cv::Range const&, cv::ParallelLoopBody const&, double) (in /usr/local/lib/libopencv_core.so.4.5.0)
-==6502==    by 0x4C4AF71: cv::dnn::ConvolutionLayerImpl::ParallelConv::run(cv::Mat const&, cv::Mat&, cv::Mat const&, std::vector<float, std::allocator<float> > const&, std::vector<float, std::allocator<float> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&, cv::dnn::dnn4_v20200908::ActivationLayer const*, int, int) (in /usr/local/lib/libopencv_dnn.so.4.5.0)
-==6502==    by 0x4C4D8CD: cv::dnn::ConvolutionLayerImpl::forward(cv::_InputArray const&, cv::_OutputArray const&, cv::_OutputArray const&) (in /usr/local/lib/libopencv_dnn.so.4.5.0)
-==6502==    by 0x4C03EF0: cv::dnn::dnn4_v20200908::Net::Impl::forwardLayer(cv::dnn::dnn4_v20200908::LayerData&) (in /usr/local/lib/libopencv_dnn.so.4.5.0)
-==6502==    by 0x4C29F99: cv::dnn::dnn4_v20200908::Net::forward(cv::_OutputArray const&, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&) (in /usr/local/lib/libopencv_dnn.so.4.5.0)
-==6502==    by 0x12DAB2: acme::Detector::Detect(cv::Mat const&) (Detector.cpp:64)
-==6502==    by 0x12FFF0: acme::Detector::WarmUp() (Detector.cpp:196)
-==6502==    by 0x12D747: acme::Detector::Detector(double, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&) (Detector.cpp:45)
-==6502== 
-==6502== HEAP SUMMARY:
-==6502==     in use at exit: 72,427,201 bytes in 3,846 blocks
-==6502==   total heap usage: 19,648 allocs, 15,802 frees, 91,516,046 bytes allocated
-==6502== 
-==6502== LEAK SUMMARY:
-==6502==    definitely lost: 0 bytes in 0 blocks
-==6502==    indirectly lost: 0 bytes in 0 blocks
-==6502==      possibly lost: 71,322,320 bytes in 330 blocks
-==6502==    still reachable: 1,104,881 bytes in 3,516 blocks
-==6502==                       of which reachable via heuristic:
-==6502==                         newarray           : 1,536 bytes in 16 blocks
-==6502==         suppressed: 0 bytes in 0 blocks
-==6502== Rerun with --leak-check=full to see details of leaked memory
-==6502== 
-==6502== For lists of detected and suppressed errors, rerun with: -s
-==6502== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
