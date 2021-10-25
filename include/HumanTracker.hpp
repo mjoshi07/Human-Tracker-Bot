@@ -94,7 +94,6 @@ class HumanTracker {
   double conf_thresh_;
   std::vector<cv::Rect> humans_;
   std::unique_ptr<acme::Detector> detector_;
-  cv::Ptr<cv::Tracker> tracker_;
 };
 }  // namespace acme
 #endif  // INCLUDE_HUMANTRACKER_HPP_
