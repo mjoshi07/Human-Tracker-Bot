@@ -113,7 +113,6 @@ void acme::AutoBot::CollectTrainData() {
     /// Uncommnent the lines below while running in training mode
     /// Get number of frames to be captured
     /// std::cout << "Enter frame count" << std::endl;
-    // std::getline(std::cin,frame_count);
     /// std::cin >> frame_count;
 
     /// comment the line below when running in training mode
@@ -138,37 +137,67 @@ void acme::AutoBot::CollectTrainData() {
 
 void acme::AutoBot::DetectTestData() {
     cap_.release();
-    cv::Mat img1 = cv::imread("..//data//test//img1.png");
-    cv::Mat img2 = cv::imread("..//data//test//img2.png");
-    cv::Mat img3 = cv::imread("..//data//test//img3.png");
-    cv::Mat img4 = cv::imread("..//data//test//img4.png");
+    cv::Mat img1 = cv::imread("..//data//test//1.png");
+    cv::Mat img2 = cv::imread("..//data//test//2.png");
+    cv::Mat img3 = cv::imread("..//data//test//3.png");
+    cv::Mat img4 = cv::imread("..//data//test//4.png");
+    cv::Mat img5 = cv::imread("..//data//test//5.jpeg");
 
     /// ground truth for img 2
-    cv::Rect ground_truth_2(330, 107, 160, 294);
+    std::vector<cv::Rect> ground_truth_2 = {cv::Rect(330, 107, 160, 294)};
 
     /// ground truth for img 3
-    cv::Rect ground_truth_3(298, 126, 98, 228);
+    std::vector<cv::Rect> ground_truth_3 = {cv::Rect(298, 126, 98, 228)};
 
     /// ground truth for img 1
-    cv::Rect ground_truth_1(300, 21, 197, 310);
+    std::vector<cv::Rect> ground_truth_1 = {cv::Rect(300, 21, 197, 310)};
 
     /// ground truth for img 4
-    cv::Rect ground_truth_4(297, 84, 147, 265);
+    std::vector<cv::Rect> ground_truth_4 = {cv::Rect(297, 84, 147, 265)};
 
-    std::vector <cv::Rect> ground_truth = { ground_truth_1, ground_truth_2,
-                            ground_truth_3, ground_truth_4};
-    std::vector <cv::Mat> imgs = {img1, img2, img3, img4};
+    /// ground truth for img 4
+    std::vector<cv::Rect> ground_truth_5 = {cv::Rect(320, 55, 110, 400),
+        cv::Rect(430, 50, 120, 415)};
+    std::vector<std::vector<cv::Rect>> gts = {ground_truth_1, ground_truth_2,
+        ground_truth_3, ground_truth_4, ground_truth_5};
+
+
+    std::vector <cv::Mat> imgs = {img1, img2, img3, img4, img5};
     for (int i = 0; i < static_cast<int>(imgs.size()); i++) {
         p_frame_ = acme::Utils::ResizeImage(imgs[i], p_size_);
-        cv::Rect box2;
-        /// get bboxes of objects tracked by HumanTracker class in frame
-        box2 = human_tracker_->TrackHumans(p_frame_)[0];
 
-        double iou = acme::Utils::CalculateIOU(ground_truth[i], box2);
-        std::cout << "IoU for image " + std::to_string(i+1) + ": " +
-        std::to_string(iou) << std::endl;
+        /// get bboxes of objects tracked by HumanTracker class in frame
+        auto box2 = human_tracker_->TrackHumans(p_frame_);
+        for ( int j = 0; j < static_cast<int>(gts[i].size()); j++ ) {
+        double iou = acme::Utils::CalculateIOU(gts[i][j], box2[j]);
+        std::cout << " IoU:" << iou << std::endl;
+        /// Uncomment this block when using Testing mode
+        /*
+        cv::rectangle ( p_frame_, gts[i][j], cv::Scalar(0,255,0), 2 );
+        cv::rectangle ( p_frame_, box2[j], cv::Scalar(0,0,255), 2 );
+
+        std::string label1 = "ID: " + std::to_string(j);
+        std::string label2 = "IoU: " + std::to_string(static_cast<float>(iou));
+
+        cv::putText(p_frame_, label1, cv::Point(gts[i][j].x,
+            gts[i][j].y), 0, 0.5, cv::Scalar(255,255,255), 4);
+        cv::putText(p_frame_, label1, cv::Point(gts[i][j].x,
+            gts[i][j].y), 0, 0.5, cv::Scalar(255,0,0), 2);
+
+        cv::putText( p_frame_, label2, cv::Point(gts[i][j].x,
+            gts[i][j].y+20), 0, 0.5, cv::Scalar(255,255,255), 4);
+        cv::putText (p_frame_, label2, cv::Point(gts[i][j].x,
+            gts[i][j].y+20), 0, 0.5, cv::Scalar(255,0,0), 2);*/
+    }
+
+        /// Uncomment this line when in Testing mode
+
+        /*
+        cv::imshow("img", p_frame_);
+        cv::waitKey(0);*/
     }
 }
+
 
 
 void acme::AutoBot::RunRealTime() {

@@ -26,9 +26,9 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Acme-Robotics-Human-Tracker
-   &#160;<span id="projectnumber">0.1</span>
+   &#160;<span id="projectnumber">0.2</span>
    </div>
-   <div id="projectbrief">Detect and tracks human</div>
+   <div id="projectbrief">Detects and tracks humans in robot reference frame</div>
   </td>
  </tr>
  </tbody>
@@ -128,70 +128,71 @@ $(document).ready(function(){initNavTree('_detector_8hpp_source.html',''); initR
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keyword">namespace </span>acme {</div>
 <div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="structacme_1_1_detection.html">   55</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structacme_1_1_detection.html">Detection</a> {</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;      <a class="code" href="structacme_1_1_detection.html">Detection</a>(cv::Rect box, <span class="keywordtype">double</span> conf, <span class="keyword">const</span> std::string &amp;n) :</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;      name(n), bbox(box), confidence(conf) {}</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;      bbox(box), confidence(conf), name(n) {}</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;      cv::Rect bbox;</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;      <span class="keywordtype">double</span> confidence;</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;      std::string name;</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;};</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
-<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="classacme_1_1_detector.html">   67</a></span>&#160;<span class="keyword">class </span><a class="code" href="classacme_1_1_detector.html">Detector</a> {</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <a class="code" href="classacme_1_1_detector.html#a7a2a2b970b20c2c6d6ce61344dd90dc5">Detector</a>(<span class="keywordtype">double</span> conf, <span class="keyword">const</span> std::vector&lt;std::string&gt; &amp;classes);</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <a class="code" href="classacme_1_1_detector.html#a7da3d5523e6dd3d2e25bd051763e9ae1">~Detector</a>();</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;      std::vector&lt;acme::Detection&gt; <a class="code" href="classacme_1_1_detector.html#aeffcf2b0e31ebe1c3d0eb560289b4d02">Detect</a>(<span class="keyword">const</span> cv::Mat&amp; frame);</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;      <span class="keywordtype">void</span> <a class="code" href="classacme_1_1_detector.html#a013f013200d81f19122f7c3c6c56596f">SetClasses</a>(<span class="keyword">const</span> std::vector&lt;std::string&gt; &amp;classes = {});</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;      <span class="keywordtype">void</span> <a class="code" href="classacme_1_1_detector.html#a7aff3807523bba4fba102d34b77fe191">SetNmsThresh</a>(<span class="keyword">const</span> <span class="keywordtype">double</span> nms_thresh);</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;      <span class="keywordtype">void</span> <a class="code" href="classacme_1_1_detector.html#ae183b537d503e907025a35eea15296c9">SetInputWIdth</a>(<span class="keyword">const</span> <span class="keywordtype">int</span> input_width);</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;      <span class="keywordtype">void</span> <a class="code" href="classacme_1_1_detector.html#a9ee8c93309191850c8192033496d42ad">SetInputHeight</a>(<span class="keyword">const</span> <span class="keywordtype">int</span> input_height);</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;      <span class="keywordtype">void</span> <a class="code" href="classacme_1_1_detector.html#a7492e793f27b968dbfcef7d669a42b27">SetScaleFactor</a>(<span class="keyword">const</span> <span class="keywordtype">double</span> scale_factor);</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160; </div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;      <span class="keywordtype">void</span> <a class="code" href="classacme_1_1_detector.html#a2912b1e927585a678f85e369f3959d4b">SetMeanToSubtract</a>(<span class="keyword">const</span> cv::Scalar &amp;mean);</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160; </div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;      <span class="keywordtype">void</span> <a class="code" href="classacme_1_1_detector.html#a5696e922d15805d1f5b6dc3c3c5dc33b">SetSwapRB</a>(<span class="keyword">const</span> <span class="keywordtype">bool</span> swap_rb);</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160; </div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;      <span class="keywordtype">void</span> <a class="code" href="classacme_1_1_detector.html#a95b97c1fe4d622d22b1fa98e575838dd">SetCropImg</a>(<span class="keyword">const</span> <span class="keywordtype">bool</span> crop_img);</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160; </div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;      <span class="keywordtype">void</span> <a class="code" href="classacme_1_1_detector.html#ad73d4e0ca9917f3686a250a51e44c5b1">SetBackend</a>(<span class="keyword">const</span> <span class="keywordtype">int</span> backend);</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160; </div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;      <span class="keywordtype">void</span> <a class="code" href="classacme_1_1_detector.html#a19ae0851235d34fc71b6ef5616d19e3d">SetTarget</a>(<span class="keyword">const</span> <span class="keywordtype">int</span> target);</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160; </div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;      <span class="keywordtype">void</span> <a class="code" href="classacme_1_1_detector.html#addac0065894ca494767435694eb5dbdc">SetNumChannels</a>(<span class="keyword">const</span> <span class="keywordtype">int</span> num_channels);</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160; </div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160; <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;      <span class="keywordtype">void</span> WarmUp();</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160; </div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;      <span class="keywordtype">void</span> InitModel(<span class="keywordtype">double</span> conf, <span class="keyword">const</span> std::vector&lt;std::string&gt; &amp;c);</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160; </div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;      std::vector&lt;acme::Detection&gt; ProcessNet(<span class="keyword">const</span> cv::Size &amp;s);</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160; </div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160; <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;        <span class="keywordtype">double</span> conf_thresh_;</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;        std::vector&lt;std::string&gt; all_classes_;</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;        std::vector&lt;std::string&gt; classes_;</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;        <span class="keywordtype">double</span> nms_thresh_;</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        <span class="keywordtype">double</span> input_width_;</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;        <span class="keywordtype">double</span> input_height_;</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;        cv::Size size_;</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;        <span class="keywordtype">double</span> scale_;</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;        cv::Scalar mean_;</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;        <span class="keywordtype">bool</span> swap_;</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;        <span class="keywordtype">bool</span> crop_;</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;        <span class="keywordtype">int</span> backend_;</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;        <span class="keywordtype">int</span> target_;</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;        <span class="keywordtype">int</span> num_channels_;</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;        cv::dnn::Net network_;</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;        std::vector&lt;std::string&gt; out_names_;</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;        std::vector&lt;cv::Mat&gt; outputs_;</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;};</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;}  <span class="comment">// namespace acme</span></div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;<span class="preprocessor">#endif  // INCLUDE_DETECTOR_HPP_</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="classacme_1_1_detector.html">   68</a></span>&#160;<span class="keyword">class </span><a class="code" href="classacme_1_1_detector.html">Detector</a> {</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <a class="code" href="classacme_1_1_detector.html#a7a2a2b970b20c2c6d6ce61344dd90dc5">Detector</a>(<span class="keywordtype">double</span> conf, <span class="keyword">const</span> std::vector&lt;std::string&gt; &amp;classes);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <a class="code" href="classacme_1_1_detector.html#a7da3d5523e6dd3d2e25bd051763e9ae1">~Detector</a>();</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;      std::vector&lt;acme::Detection&gt; <a class="code" href="classacme_1_1_detector.html#aeffcf2b0e31ebe1c3d0eb560289b4d02">Detect</a>(<span class="keyword">const</span> cv::Mat&amp; frame);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;      <span class="keywordtype">void</span> <a class="code" href="classacme_1_1_detector.html#a013f013200d81f19122f7c3c6c56596f">SetClasses</a>(<span class="keyword">const</span> std::vector&lt;std::string&gt; &amp;classes = {});</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;      <span class="keywordtype">void</span> <a class="code" href="classacme_1_1_detector.html#a7aff3807523bba4fba102d34b77fe191">SetNmsThresh</a>(<span class="keyword">const</span> <span class="keywordtype">double</span> nms_thresh);</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;      <span class="keywordtype">void</span> <a class="code" href="classacme_1_1_detector.html#ae183b537d503e907025a35eea15296c9">SetInputWIdth</a>(<span class="keyword">const</span> <span class="keywordtype">int</span> input_width);</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;      <span class="keywordtype">void</span> <a class="code" href="classacme_1_1_detector.html#a9ee8c93309191850c8192033496d42ad">SetInputHeight</a>(<span class="keyword">const</span> <span class="keywordtype">int</span> input_height);</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;      <span class="keywordtype">void</span> <a class="code" href="classacme_1_1_detector.html#a7492e793f27b968dbfcef7d669a42b27">SetScaleFactor</a>(<span class="keyword">const</span> <span class="keywordtype">double</span> scale_factor);</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;      <span class="keywordtype">void</span> <a class="code" href="classacme_1_1_detector.html#a2912b1e927585a678f85e369f3959d4b">SetMeanToSubtract</a>(<span class="keyword">const</span> cv::Scalar &amp;mean);</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160; </div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;      <span class="keywordtype">void</span> <a class="code" href="classacme_1_1_detector.html#a5696e922d15805d1f5b6dc3c3c5dc33b">SetSwapRB</a>(<span class="keyword">const</span> <span class="keywordtype">bool</span> swap_rb);</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160; </div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;      <span class="keywordtype">void</span> <a class="code" href="classacme_1_1_detector.html#a95b97c1fe4d622d22b1fa98e575838dd">SetCropImg</a>(<span class="keyword">const</span> <span class="keywordtype">bool</span> crop_img);</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160; </div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;      <span class="keywordtype">void</span> <a class="code" href="classacme_1_1_detector.html#ad73d4e0ca9917f3686a250a51e44c5b1">SetBackend</a>(<span class="keyword">const</span> <span class="keywordtype">int</span> backend);</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160; </div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;      <span class="keywordtype">void</span> <a class="code" href="classacme_1_1_detector.html#a19ae0851235d34fc71b6ef5616d19e3d">SetTarget</a>(<span class="keyword">const</span> <span class="keywordtype">int</span> target);</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160; </div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;      <span class="keywordtype">void</span> <a class="code" href="classacme_1_1_detector.html#addac0065894ca494767435694eb5dbdc">SetNumChannels</a>(<span class="keyword">const</span> <span class="keywordtype">int</span> num_channels);</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160; </div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160; <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;      <span class="keywordtype">void</span> WarmUp();</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160; </div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;      <span class="keywordtype">void</span> InitModel(<span class="keywordtype">double</span> conf, <span class="keyword">const</span> std::vector&lt;std::string&gt; &amp;c);</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160; </div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;      std::vector&lt;acme::Detection&gt; ProcessNet(<span class="keyword">const</span> cv::Size &amp;s);</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160; </div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160; <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;        <span class="keywordtype">double</span> conf_thresh_;</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;        std::vector&lt;std::string&gt; all_classes_;</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;        std::vector&lt;std::string&gt; classes_;</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        <span class="keywordtype">double</span> nms_thresh_;</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;        <span class="keywordtype">double</span> input_width_;</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;        <span class="keywordtype">double</span> input_height_;</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;        cv::Size size_;</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;        <span class="keywordtype">double</span> scale_;</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;        cv::Scalar mean_;</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;        <span class="keywordtype">bool</span> swap_;</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;        <span class="keywordtype">bool</span> crop_;</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;        <span class="keywordtype">int</span> backend_;</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;        <span class="keywordtype">int</span> target_;</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;        <span class="keywordtype">int</span> num_channels_;</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;        cv::dnn::Net network_;</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;        std::vector&lt;std::string&gt; out_names_;</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;        std::vector&lt;cv::Mat&gt; outputs_;</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;};</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;}  <span class="comment">// namespace acme</span></div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;<span class="preprocessor">#endif  // INCLUDE_DETECTOR_HPP_</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="aclassacme_1_1_detector_html_ad73d4e0ca9917f3686a250a51e44c5b1"><div class="ttname"><a href="classacme_1_1_detector.html#ad73d4e0ca9917f3686a250a51e44c5b1">acme::Detector::SetBackend</a></div><div class="ttdeci">void SetBackend(const int backend)</div><div class="ttdoc">Set the Backend value for the model network.</div><div class="ttdef"><b>Definition:</b> Detector.cpp:105</div></div>
@@ -204,7 +205,7 @@ $(document).ready(function(){initNavTree('_detector_8hpp_source.html',''); initR
 <div class="ttc" id="aclassacme_1_1_detector_html_a9ee8c93309191850c8192033496d42ad"><div class="ttname"><a href="classacme_1_1_detector.html#a9ee8c93309191850c8192033496d42ad">acme::Detector::SetInputHeight</a></div><div class="ttdeci">void SetInputHeight(const int input_height)</div><div class="ttdef"><b>Definition:</b> Detector.cpp:85</div></div>
 <div class="ttc" id="aclassacme_1_1_detector_html_a7aff3807523bba4fba102d34b77fe191"><div class="ttname"><a href="classacme_1_1_detector.html#a7aff3807523bba4fba102d34b77fe191">acme::Detector::SetNmsThresh</a></div><div class="ttdeci">void SetNmsThresh(const double nms_thresh)</div><div class="ttdoc">Set the nms threshold for model network.</div><div class="ttdef"><b>Definition:</b> Detector.cpp:77</div></div>
 <div class="ttc" id="aclassacme_1_1_detector_html_a95b97c1fe4d622d22b1fa98e575838dd"><div class="ttname"><a href="classacme_1_1_detector.html#a95b97c1fe4d622d22b1fa98e575838dd">acme::Detector::SetCropImg</a></div><div class="ttdeci">void SetCropImg(const bool crop_img)</div><div class="ttdoc">Set the random Crop Img for the model network.</div><div class="ttdef"><b>Definition:</b> Detector.cpp:101</div></div>
-<div class="ttc" id="aclassacme_1_1_detector_html"><div class="ttname"><a href="classacme_1_1_detector.html">acme::Detector</a></div><div class="ttdoc">Detector class to get detections on an image.</div><div class="ttdef"><b>Definition:</b> Detector.hpp:67</div></div>
+<div class="ttc" id="aclassacme_1_1_detector_html"><div class="ttname"><a href="classacme_1_1_detector.html">acme::Detector</a></div><div class="ttdoc">Detector class to get detections on an image.</div><div class="ttdef"><b>Definition:</b> Detector.hpp:68</div></div>
 <div class="ttc" id="aclassacme_1_1_detector_html_a7a2a2b970b20c2c6d6ce61344dd90dc5"><div class="ttname"><a href="classacme_1_1_detector.html#a7a2a2b970b20c2c6d6ce61344dd90dc5">acme::Detector::Detector</a></div><div class="ttdeci">Detector(double conf, const std::vector&lt; std::string &gt; &amp;classes)</div><div class="ttdoc">Construct a new Detector object.</div><div class="ttdef"><b>Definition:</b> Detector.cpp:40</div></div>
 <div class="ttc" id="aclassacme_1_1_detector_html_ae183b537d503e907025a35eea15296c9"><div class="ttname"><a href="classacme_1_1_detector.html#ae183b537d503e907025a35eea15296c9">acme::Detector::SetInputWIdth</a></div><div class="ttdeci">void SetInputWIdth(const int input_width)</div><div class="ttdoc">Set the input width for the model network.</div><div class="ttdef"><b>Definition:</b> Detector.cpp:81</div></div>
 <div class="ttc" id="astructacme_1_1_detection_html"><div class="ttname"><a href="structacme_1_1_detection.html">acme::Detection</a></div><div class="ttdoc">Structure to store detector output.</div><div class="ttdef"><b>Definition:</b> Detector.hpp:55</div></div>

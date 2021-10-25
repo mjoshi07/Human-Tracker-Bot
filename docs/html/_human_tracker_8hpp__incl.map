@@ -1,14 +1,14 @@
 <map id="include/HumanTracker.hpp" name="include/HumanTracker.hpp">
-<area shape="rect" id="node1" title="HumanTracker class declaration for Acme Robotics &#45; Human Tracker." alt="" coords="378,5,555,32"/>
-<area shape="rect" id="node2" title=" " alt="" coords="619,229,677,256"/>
+<area shape="rect" id="node1" title="HumanTracker class declaration for Acme Robotics &#45; Human Tracker." alt="" coords="661,5,838,32"/>
+<area shape="rect" id="node2" title=" " alt="" coords="613,229,672,256"/>
 <area shape="rect" id="node3" title=" " alt="" coords="5,155,75,181"/>
-<area shape="rect" id="node4" title=" " alt="" coords="393,80,540,107"/>
-<area shape="rect" id="node5" title=" " alt="" coords="564,80,711,107"/>
-<area shape="rect" id="node6" href="$_detector_8hpp.html" title="Detector class declaration for Acme Robotics &#45; Human Tracker." alt="" coords="273,80,369,107"/>
-<area shape="rect" id="node7" title=" " alt="" coords="686,155,741,181"/>
-<area shape="rect" id="node8" title=" " alt="" coords="42,229,182,256"/>
-<area shape="rect" id="node9" title=" " alt="" coords="248,155,395,181"/>
-<area shape="rect" id="node10" title=" " alt="" coords="419,155,610,181"/>
-<area shape="rect" id="node11" href="$_utils_8hpp.html" title="Utils class declaration for Acme Robotics &#45; Human Tracker." alt="" coords="149,155,224,181"/>
-<area shape="rect" id="node12" title=" " alt="" coords="207,229,332,256"/>
+<area shape="rect" id="node4" title=" " alt="" coords="787,80,933,107"/>
+<area shape="rect" id="node5" title=" " alt="" coords="957,80,1104,107"/>
+<area shape="rect" id="node6" href="$_detector_8hpp.html" title="Detector class declaration for Acme Robotics &#45; Human Tracker." alt="" coords="392,80,488,107"/>
+<area shape="rect" id="node7" title=" " alt="" coords="219,229,274,256"/>
+<area shape="rect" id="node8" title=" " alt="" coords="449,229,589,256"/>
+<area shape="rect" id="node9" title=" " alt="" coords="565,155,712,181"/>
+<area shape="rect" id="node10" title=" " alt="" coords="99,155,290,181"/>
+<area shape="rect" id="node11" href="$_utils_8hpp.html" title="Utils class declaration for Acme Robotics &#45; Human Tracker." alt="" coords="365,155,440,181"/>
+<area shape="rect" id="node12" title=" " alt="" coords="299,229,424,256"/>
 </map>
