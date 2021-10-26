@@ -97,7 +97,7 @@ sh requirements.sh
 * The results on live webcame 
 ![image](https://github.com/mjoshi07/Acme-Robotics-Human-Tracker/blob/dev_phase2/output_phase2/out.gif)
 * Human location in ROBOT REFERENCE FRAME
-* ![image](https://github.com/mjoshi07/Acme-Robotics-Human-Tracker/blob/dev_phase2/output_phase2/output.png)
+![image](https://github.com/mjoshi07/Acme-Robotics-Human-Tracker/blob/dev_phase2/output_phase2/output.png)
 ## Metrics
 * We used Intersection over Union as a metric for our detector as it is a better metric than measuring error between centroids
 ![image](https://www.pyimagesearch.com/wp-content/uploads/2016/09/iou_equation.png)
