@@ -4,7 +4,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/naitri/Acme-Robotics-Human-Tracker/badge.svg?branch=dev_phase1)](https://coveralls.io/github/naitri/Acme-Robotics-Human-Tracker?branch=dev_phase1)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-Detects and Tracks Human in Robot Reference Frame
+A C++ module for Object Detection and tracking (in this case humans are detected, but 80 classes from COCO dataset can be detected). The coordinates of all the objects detected in the camera frame are transformed into robot reference frame for further processing.
 
 ## Project contibutors
 
